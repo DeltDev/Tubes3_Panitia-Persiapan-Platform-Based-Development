@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.UI;
 public class ButtonController : MonoBehaviour
 {
     #region Transition
@@ -37,10 +37,11 @@ public class ButtonController : MonoBehaviour
         FindObjectOfType<AudioManager>().PlaySound("ButtonHover");
     }
     #endregion
-    #region How To Play Button
-    public void HowToPlayButton()
+    #region FindButton
+    public void FindButton()
     {
-        TransitionAnimation.LoadCertainScene(2);
+        
+        Debug.Log("CARI");
         FindObjectOfType<AudioManager>().PlaySound("ButtonClick");
     }
     #endregion
