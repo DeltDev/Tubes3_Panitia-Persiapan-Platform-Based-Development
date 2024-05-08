@@ -1,0 +1,92 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3985758197183588101
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2728710390199269573}
+  - component: {fileID: 873579112229270158}
+  - component: {fileID: 7237192380514478079}
+  m_Layer: 0
+  m_Name: AudioManager 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2728710390199269573
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3985758197183588101}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &873579112229270158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3985758197183588101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d19348cbdae31942ad5a38fc77c53bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SoundList:
+  - sound: {fileID: 8300000, guid: cafe491d67a114441902d88f3f9ddef0, type: 3}
+    name: BGMTheme
+    volume: 0.6
+    pitch: 1
+    source: {fileID: 0}
+    loop: 1
+  - sound: {fileID: 8300000, guid: 6ac70186e0a78e349a933ea0fbdd9a50, type: 3}
+    name: Jump
+    volume: 0.7
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - sound: {fileID: 8300000, guid: 2516cc1f6dee4ab4895877cd57583d74, type: 3}
+    name: Death
+    volume: 0.4
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - sound: {fileID: 8300000, guid: a9648344880b2d146a98be1d93b9b187, type: 3}
+    name: Teleport
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - sound: {fileID: 8300000, guid: 94350d60b6921fc4e9e7515d14da150a, type: 3}
+    name: ButtonHover
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - sound: {fileID: 8300000, guid: 292ad4f6422da20459d1aedcac22dce1, type: 3}
+    name: ButtonClick
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+--- !u!81 &7237192380514478079
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3985758197183588101}
+  m_Enabled: 1
