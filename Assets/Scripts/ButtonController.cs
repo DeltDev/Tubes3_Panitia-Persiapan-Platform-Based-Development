@@ -3,17 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 public class ButtonController : MonoBehaviour
 {
     #region Transition
     public LevelLoader TransitionAnimation;
     public GameObject LevelLoaderGameObject;
     #endregion
+    #region Dropdown
+    [SerializeField] private TMP_Dropdown dropdown;
+    [SerializeField] private GameObject DropdownGameObject;
+    #endregion
 
+    #region Dropdown Values
+    [HideInInspector] public int dropdownIndex;
+    [HideInInspector] public string selectedAlgorithm;
+    #endregion
     private void Start()
     {
         LevelLoaderGameObject = GameObject.Find("LevelLoader");
         TransitionAnimation = LevelLoaderGameObject.GetComponent<LevelLoader>();
+        DropdownGameObject = GameObject.Find("AlgorithmDropdown");
+        dropdown = DropdownGameObject.GetComponent<TMP_Dropdown>();
     }
     #region Play Button
     public void PlayButton()
@@ -40,8 +51,9 @@ public class ButtonController : MonoBehaviour
     #region FindButton
     public void FindButton()
     {
-        
-        Debug.Log("CARI");
+        dropdownIndex = dropdown.value;
+        selectedAlgorithm = dropdown.options[dropdownIndex].text;
+        Debug.Log(selectedAlgorithm);
         FindObjectOfType<AudioManager>().PlaySound("ButtonClick");
     }
     #endregion
