@@ -30,7 +30,8 @@ public class ButtonController : MonoBehaviour
         Application.Quit();
         Debug.Log("Aplikasi sudah keluar");
     }
-
+    #endregion
+    #region Hover Button
     public void HoverPlaySound()
     {
         FindObjectOfType<AudioManager>().PlaySound("ButtonHover");
