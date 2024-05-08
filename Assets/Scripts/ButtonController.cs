@@ -63,4 +63,13 @@ public class ButtonController : MonoBehaviour
         FindObjectOfType<AudioManager>().PlaySound("ButtonClick");
     }
     #endregion
+
+    #region Choose Image
+
+    public void ChooseImageButton(){
+        //Buka Menu pilih gambar
+
+        Debug.Log("Pilih Citra");
+    }
+    #endregion
 }
