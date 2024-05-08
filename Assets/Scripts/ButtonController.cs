@@ -37,7 +37,13 @@ public class ButtonController : MonoBehaviour
         FindObjectOfType<AudioManager>().PlaySound("ButtonHover");
     }
     #endregion
-
+    #region How To Play Button
+    public void HowToPlayButton()
+    {
+        TransitionAnimation.LoadCertainScene(2);
+        FindObjectOfType<AudioManager>().PlaySound("ButtonClick");
+    }
+    #endregion
     #region MainMenuButton
     public void MainMenuButton() {
         TransitionAnimation.LoadCertainScene(0);
