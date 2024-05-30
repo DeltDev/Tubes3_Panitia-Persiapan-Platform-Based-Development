@@ -282,7 +282,7 @@ class Program
 {
        static void Main(string[] args)
     {
-        string connectionString = "Server=localhost;Database=stima;Uid=root;Pwd=Radhita7*;";
+        string connectionString = "Server=localhost;Database=stima;Uid=;Pwd=;";
         DatabaseManager dbManager = new DatabaseManager(connectionString);
         string name = dbManager.getNameFromSidikJari(@"CreateDatabase\test\100__M_Left_index_finger.bmp");
         // Console.WriteLine(name);

@@ -362,26 +362,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Lenovo\\.nuget\\packages\\": {}
+    "C:\\Users\\anton\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Tubes3_Panitia-Persiapan-Platform-Based-Development\\src\\src.csproj",
+      "projectUniqueName": "C:\\Users\\anton\\Documents\\KULIAH - IF\\STRATEGI ALGORITMA\\TUBES\\TUBES 3\\Tubes3_Panitia-Persiapan-Platform-Based-Development\\src\\src.csproj",
       "projectName": "src",
-      "projectPath": "D:\\Tubes3_Panitia-Persiapan-Platform-Based-Development\\src\\src.csproj",
-      "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
-      "outputPath": "D:\\Tubes3_Panitia-Persiapan-Platform-Based-Development\\src\\obj\\",
+      "projectPath": "C:\\Users\\anton\\Documents\\KULIAH - IF\\STRATEGI ALGORITMA\\TUBES\\TUBES 3\\Tubes3_Panitia-Persiapan-Platform-Based-Development\\src\\src.csproj",
+      "packagesPath": "C:\\Users\\anton\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\anton\\Documents\\KULIAH - IF\\STRATEGI ALGORITMA\\TUBES\\TUBES 3\\Tubes3_Panitia-Persiapan-Platform-Based-Development\\src\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\anton\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0-windows"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -433,7 +431,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.301/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
