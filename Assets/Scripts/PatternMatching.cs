@@ -1,26 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Globalization;
+﻿using System.Drawing;
 
 public abstract class AlgoritmaPatternMatching
 {
-    protected string pattern;                       // Fingerprint input.
-    protected Dictionary<string, double> texts;     // Fingerprint dari database & tingkat kemiripannya.
-
-    public AlgoritmaPatternMatching(string pattern)
-    {
-        this.pattern = pattern;
-        texts = new Dictionary<string, double>();
-    }
-
-    public string getPattern() { return pattern; }
-
-    public Dictionary<string, double> getTexts() { return texts; } 
-    
-    public void AddText(string text, double val) { texts[text] = val; }
-
-    public int HammingDistance(string text)
+    public int HammingDistance(string text, string pattern)
     {
         // Mengembalikan nilai Hamming Distance dari pattern ke text,
         // Asumsi panjang text s.d. panjang pattern.
@@ -32,64 +14,99 @@ public abstract class AlgoritmaPatternMatching
         return cnt;
     }
 
-    public double HitungTingkatKemiripan(string text) { return 1 - ((double)HammingDistance(text) / pattern.Length); }
+    // public int LevenshteinDistance(string text, string pattern)
+    // {
+    //     // Kalo kedua string adalah sama, kembalikan 0.
+    //     if (text.Equals(pattern))
+    //         return 0;
+        
+    //     // Kalo ada string yang kosong, kembalikan panjang string yang lain.
+    //     if (text.Length == 0 || pattern.Length == 0)
+    //         return text.Length == 0 ? pattern.Length : text.Length;
 
-    public abstract List<int> Match(string text);
+    //     if (text[^1] == pattern[^1])
+    //         return LevenshteinDistance(text[..^1], pattern[..^1]);
 
-    public void Start(List<string> listText)
+    //     int insert = LevenshteinDistance(text, pattern[..^1]);
+    //     int remove = LevenshteinDistance(text[..^1], pattern);    
+    //     int replace = LevenshteinDistance(text[..^1], pattern[..^1]);
+
+    //     return 1 + Math.Min(Math.Min(insert, remove), replace);   
+    // }
+
+    // public int LCS(string text, string pattern)
+    // {
+    //     if (text.Equals(pattern))
+    //         return text.Length;
+        
+    //     if (text.Length == 0 || pattern.Length == 0)
+    //         return 0;
+        
+    //     if (text[text.Length - 1] == pattern[pattern.Length - 1])
+    //         return 1 + LCS(text[..^1], pattern[..^1]);
+        
+    //     return Math.Max(LCS(text[..^1], pattern), LCS(text, pattern[..^1]));
+    // }
+
+    public double HitungTingkatKemiripan(string text, string pattern) { return 1 - ((double)HammingDistance(text, pattern) / pattern.Length); }
+
+    public abstract List<int> Match(string text, string pattern);
+
+    public void Start(List<string> sidik_jari_db, List<string> sidik_jari_input) 
     {   
-        // Menerima array ASCII fingerprint dari database
-        // Menampilkan tingkat kemiripan masing-masing fingerprint
-        Console.WriteLine("Pattern: " + pattern);
-        foreach (string text in listText)
+        string sidik_jari_db_str = string.Join("", sidik_jari_db);
+        string sidik_jari_input_str = string.Join("", sidik_jari_input);
+        
+        if (sidik_jari_db_str.Length != sidik_jari_input_str.Length)
+            throw new BedaLengthException("Besar ukuran sidik jari berbeda!");
+
+        double tingkatKemiripan = 1;
+        for (int i = 0; i < sidik_jari_input.Count; i++)
         {
-            if (text.Length != pattern.Length)
-                throw new BedaLenException("Text dan pattern harus memiliki panjang yang sama!");
+            string currentStr = sidik_jari_input[i];
+            List<int> match = Match(sidik_jari_db_str, currentStr);
 
-            List<int> matches = Match(text);
-            double tingkatKemiripan = 1;
-            if (matches.Count <= 0)
-                tingkatKemiripan = HitungTingkatKemiripan(text);
-            AddText(text, tingkatKemiripan);
-
-            Console.WriteLine(text + ": " + texts[text]);
+            // Asumsikan ukuran ASCII fingerprint sama semua
+            if (match.Count == 0)
+            {
+                // bukan total match
+                tingkatKemiripan = HitungTingkatKemiripan(sidik_jari_db_str, sidik_jari_input_str);
+                break;
+            }
         }
+        Console.WriteLine(tingkatKemiripan);
     }
 }   
 
 public class KMP : AlgoritmaPatternMatching {
-    private List<int> borderFunction;
-    public KMP(string pattern) : base(pattern) 
-    {
-        // Isi border function
-        borderFunction = new List<int>();
-        for (int k = 0; k < pattern.Length; k++)
-            borderFunction.Add(0);
-
-        int i = 1, j = 0;
-        while (i < pattern.Length)
-        {
-            if (pattern[j] != pattern[i])
-            {
-                if (j > 0)
-                    j = borderFunction[j - 1];
-                else
-                    i++;
-            }
-            else if (pattern[i] == pattern[j])
-            {
-                i++;
-                j++;
-                borderFunction[i - 1] = j;
-            }
-        }
-    }
-    
-    public override List<int> Match(string text)
+    public override List<int> Match(string text, string pattern)
     {
         // Mengembalikan array yang berisi index 
         // awal kemunculan pattern dalam text
         List<int> matches = new List<int>();
+
+        // Isi border function
+        List<int> borderFunction = new List<int>();
+        for (int k = 0; k < pattern.Length; k++)
+            borderFunction.Add(0);
+
+        int i1 = 1, j1 = 0;
+        while (i1 < pattern.Length)
+        {
+            if (pattern[j1] != pattern[i1])
+            {
+                if (j1 > 0)
+                    j1 = borderFunction[j1 - 1];
+                else
+                    i1++;
+            }
+            else if (pattern[i1] == pattern[j1])
+            {
+                i1++;
+                j1++;
+                borderFunction[i1 - 1] = j1;
+            }
+        }
     
         int i = 0, j = 0;
         while (i < text.Length)
@@ -97,14 +114,19 @@ public class KMP : AlgoritmaPatternMatching {
             if (pattern[j] != text[i])
             {
                 if (j > 0)
+                {
                     j = borderFunction[j - 1];
+                }
                 else
                     i++;
             }
             else
             {
                 if (j == pattern.Length - 1)
+                {
                     matches.Add(i - j);
+                    j = 0;
+                }
                 i++;
                 j++;
             }
@@ -114,21 +136,16 @@ public class KMP : AlgoritmaPatternMatching {
 }
 
 public class BM : AlgoritmaPatternMatching 
-{
-    private Dictionary<char, int> charLastIdx;
-    
-    public BM(string pattern) : base(pattern) 
-    { 
-        charLastIdx = new Dictionary<char, int>(); 
-        for (int i = 0; i < pattern.Length; i++)
-            charLastIdx[pattern[i]] = i;
-    }
-
-    public override List<int> Match(string text) 
+{ 
+    public override List<int> Match(string text, string pattern) 
     {
         // Mengembalikan array yang berisi index 
         // awal kemunculan pattern dalam text
         List<int> matches = new List<int>();
+
+        Dictionary<char, int> charLastIdx = new Dictionary<char, int>(); 
+        for (int i = 0; i < pattern.Length; i++)
+            charLastIdx[pattern[i]] = i;
 
         int shift = 0;
         while (shift + pattern.Length <= text.Length)
@@ -164,21 +181,29 @@ public class BM : AlgoritmaPatternMatching
     }
 }
 
-public class BedaLenException : Exception
+public class BedaLengthException : Exception
 {
-    public BedaLenException() : base() {}
-    public BedaLenException(string str) : base(str) {}
-    public BedaLenException(string str, Exception innerException) : base(str, innerException) {}
+    public BedaLengthException() : base() {}
+    public BedaLengthException(string str) : base(str) {}
+    public BedaLengthException(string str, Exception innerException) : base(str, innerException) {}
 }   
 
 // public class Test {
 //     public static void Main(string[] args)
 //     {
-//         KMP kmpTest = new("ABCABC");
+//         BM kmpTest = new("ABCABC");
 
-//         List<string> lst = ["ABCADD", "ABCABC"];
+//         List<string> lst = ["ABCDEG", "ABCABC", "ABCDEF"];
 
 //         kmpTest.Start(lst);
+//         // for (int c = 0; c <= 9; c++)
+//         // {
+//         //     char d = (char) (c + '0');
+//         //     Console.WriteLine(d);
+//         // }
 //     }
 // }
 
+// TODO: Throw exception jika panjang text != panjang pattern
+//       Testing lebih lanjut
+//       Rapihin, tambahin komen
