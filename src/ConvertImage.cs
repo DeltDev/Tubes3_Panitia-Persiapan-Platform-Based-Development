@@ -1,124 +1,138 @@
-using System.ComponentModel;
-using SixLabors.ImageSharp;
-using SixLabors.ImageSharp.PixelFormats;
-using SixLabors.ImageSharp.Processing;
-using static System.Net.Mime.MediaTypeNames;
+using System.Drawing;
+using System.Text;
 
-// Nuget add --> ImageSharp
-public class ImageConverter
-{
-    public bool[,] imageToBinary(Image<Rgba32> image)
+public class ConvertImage {
+    /**
+     *  Konversi gambar menjadi array ASCII.
+     *  
+     *  @param   {string} path - path ke gambar yang ingin dikonversi.
+     *  @param   {string} filename - nama file gambar yang ingin dikonversi.
+     *  @returns {List<string>} Hasil konversi gambar menjadi array ASCII.
+     */
+    public static List<string> convertImage(string path, string filename) 
     {
-        // Mengembalikan representasi gambar dalam bentuk array biner
+        // Load gambar.
+        Bitmap image = new Bitmap(path + filename);
 
-        // Init 2d array
-        bool[,] binaryArr = new bool[image.Height, image.Width];
+        // Konversi gambar menjadi gambar hitam putih.
+        Bitmap bnw = ConvertImageToBnW(image);
 
-        // Isi array
+        // Konversi gambar hitam putih menjadi array biner dua dimensi.
+        bool[,] binaryArr = ConvertBnWToBinary(bnw);
+
+        // Konversi array biner menjadi array ASCII.
+        List<string> asciiArr = ConvertBinaryToASCII(binaryArr);
+
+        return asciiArr;
+    }
+
+    /**
+     *  Konversi gambar menjadi gambar hitam putih.
+     *  
+     *  @param   {Bitmap} image - Gambar yang ingin dikonversi.
+     *  @returns {Bitmap} Hasil konversi image menjadi gambar hitam putih.
+     */
+    public static Bitmap ConvertImageToBnW(Bitmap image) 
+    {
+        Bitmap bnw = new Bitmap(image.Width, image.Height);
         for (int y = 0; y < image.Height; y++)
-            for (int x = 0; x < image.Width; x++)
-                // Kalau pixel[i, j] hitam, isi array[j][i] dengan nilai True
-                binaryArr[y, x] = image[x, y].R == 0;
+            for (int x = 0; x < image.Width; x++) 
+            {
+                Color colorAwal = image.GetPixel(x, y);
+
+                // Konversi ke grayscale menggunakan luminosity method.
+                int grayScale = (int) (colorAwal.R * 0.21 + colorAwal.G * 0.72 + colorAwal.B * 0.05); 
+
+                // Konversi ke hitam putih dg threshold 128 (0 -> hitam, 255 -> putih).
+                bnw.SetPixel(x, y, grayScale < 128 ? Color.Black : Color.White);
+            }
+        return bnw;
+    }
+
+    /**
+     *  Konversi gambar hitam putih menjadi array biner dua dimensi.
+     *  
+     *  @param   {Bitmap} bnw - Gambar hitam putih yang ingin dikonversi.
+     *  @returns {bool[,]} Hasil konversi gambar menjadi array dua dimensi.
+     */
+    public static bool[,] ConvertBnWToBinary(Bitmap bnw) 
+    {
+        bool[,] binaryArr = new bool[bnw.Height, bnw.Width];
+        for (int y = 0; y < bnw.Height; y++)
+            for (int x = 0; x < bnw.Width; x++)
+                // Pixel hitam direpresentasikan dengan True pada array.
+                binaryArr[y, x] = bnw.GetPixel(x, y).R == 0;
         return binaryArr;
     }
 
-    public List<string> binaryToASCII(bool[,] binaryArr)
-    {
-        // Mengembalikan array yang berisi string 
-        // hasil konversi 32 pixel --> 4 karakter ascii
+    /**
+     *  Konversi array biner dua dimensi menjadi list ASCII. Setiap elemen
+     *  pada list ASCII merepresentasikan 32 elemen pada array biner. 
+     *
+     *  @param   {bool[,]} binaryArr - array biner dua dimensi yang ingin dikonversi.
+     *  @returns {List<string>} Hasil konversi array biner menjadi array ASCII.
+     */
+     public static List<string> ConvertBinaryToASCII(bool[,] binaryArr)
+     {
+        // Konversi list 32 karakter menjadi string ASCII.
+        string convert(List<char> binaryGroup) {
+            StringBuilder sb = new StringBuilder();
 
-        int row = binaryArr.GetLength(0);
-        int col = binaryArr.GetLength(1);
+            sb.Append((char)Convert.ToInt32(new string(binaryGroup.GetRange(0, 8).ToArray()), 2));
+            sb.Append((char)Convert.ToInt32(new string(binaryGroup.GetRange(8, 8).ToArray()), 2));
+            sb.Append((char)Convert.ToInt32(new string(binaryGroup.GetRange(16, 8).ToArray()), 2));
+            sb.Append((char)Convert.ToInt32(new string(binaryGroup.GetRange(24, 8).ToArray()), 2));
 
-        List<string> ret = new List<string>();
-        List<char> asciiList = new List<char>();
-        for (int i = 0; i < row; i++)
+            return sb.ToString();
+        }
+
+        List<string> asciiArr = [];
+
+        for (int y = 0; y < binaryArr.GetLength(0); y++)
         {
-            List<char> binaryList = new List<char>();
-            for (int j = 0; j < col; j++)
+            List<char> binaryGroup = [];
+            for (int x = 0; x < binaryArr.GetLength(1); x++)
             {
-                if (binaryList.Count == 8)
+                if (binaryGroup.Count == 32)
                 {
-                    // 32 pixel
-                    if (asciiList.Count == 4)
-                    {
-                        ret.Add(new string(asciiList.ToArray()));
-                        asciiList.Clear();
-                    }
-                    asciiList.Add((char)Convert.ToInt32(new string(binaryList.ToArray()), 2));
-                    binaryList.Clear();
+                    asciiArr.Add(convert(binaryGroup));
+                    binaryGroup.Clear();
                 }
-                binaryList.Add(binaryArr[i, j] ? '1' : '0');
+                binaryGroup.Add(binaryArr[y, x] ? '1' : '0');
             }
 
-            // Pad dengan '0' kalau jumlah binary < 8
-            while (binaryList.Count != 8)
-                binaryList.Add('0');
-            asciiList.Add((char)Convert.ToInt32(new string(binaryList.ToArray()), 2));
-
-            if (asciiList.Count >= 4)
+            if (binaryGroup.Count > 0)
             {
-                ret.Add(new string(asciiList.ToArray()));
-                asciiList.RemoveRange(0, 4);
-            }
-
-            if (asciiList.Count > 0)
-            {
-                // Pad dengan '00000000' kalau jumlah karakter ascii < 4
-                while (asciiList.Count < 4)
-                    asciiList.Add((char)Convert.ToInt32(new string("00000000"), 2));
-                ret.Add(new string(asciiList.ToArray()));
+                while (binaryGroup.Count != 32)
+                    binaryGroup.Add('0');
+                asciiArr.Add(convert(binaryGroup));
+                binaryGroup.Clear();
             }
         }
-        return ret;
-    }
-
-    public List<string> convertImage(string path, string filename)
-    {
-        // Path dimulai dari bin\Debug\net8.0\ ...
-        try
-        {
-            using (Image<Rgba32> image = SixLabors.ImageSharp.Image.Load<Rgba32>(path + filename))
-            {
-                // Convert gambar ke dalam bentuk 'Grayscale'
-                image.Mutate(x => x.Grayscale());
-
-                // Convert gambar menjadi 'Binary Image' (hitam putih)
-                image.Mutate(x => x.BinaryThreshold(0.5f));
-
-                bool[,] binaryArr = imageToBinary(image);
-
-                // Kembalikan list berisi potongan 4 ascii
-                List<string> ascii = binaryToASCII(binaryArr);
-                return ascii;
-            }
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e.Message);
-        }
-        return [];
-    }
+        return asciiArr;
+     }
 }
 
-/*
-public class Test
-{
-    public static void Main(string[] args)
-    {
-        ImageConverter ic = new ImageConverter();
-        List<string> fg1 = ic.convertImage("../../../ImageDataset/", "1717073090020.bmp");
-        List<string> fg2 = ic.convertImage("../../../ImageDataset/", "1717073090020.bmp");
-        List<string> fg3 = ic.convertImage("../../../ImageDataset/", "1717073090681.bmp");
-        List<string> fg4 = ic.convertImage("../../../ImageDataset/", "1717073091048.bmp");
-        AlgoritmaPatternMatching kmpTest = new KMP();
+// public class Test {
+//     public static void Main(string[] args)
+//     {
+//         List<string> fg1 = ConvertImage.convertImage("./../../../test/", "100__M_Left_index_finger.bmp");
+//         List<string> fg2 = ConvertImage.convertImage("./../../../test/", "100__M_Left_index_finger.bmp");
+//         List<string> fg3 = ConvertImage.convertImage("./../../../test/", "102__M_Right_little_finger.bmp");
+//         List<string> fg4 = ConvertImage.convertImage("./../../../test/", "100__M_Right_middle_finger.bmp");
 
-        kmpTest.Start(fg1, fg2);
-        kmpTest.Start(fg1, fg3);
-        kmpTest.Start(fg1, fg4);
+//         AlgoritmaPatternMatching kmpTest = new KMP();
 
-        // Console.WriteLine(kmpTest.LevenshteinDistance("kitten", "smitten"));
-        // Console.WriteLine("TEST");
-    }
-}
-*/
+//         Console.WriteLine("100__M_Left_index_finger.bmp: 100__M_Left_index_finger.bmp");
+//         kmpTest.Start(fg1, fg2);
+//         Console.WriteLine("100__M_Left_index_finger.bmp: 102__M_Right_little_finger.bmp");
+//         kmpTest.Start(fg1, fg3);
+//         Console.WriteLine("100__M_Left_index_finger.bmp: 100__M_Right_middle_finger.bmp");
+//         kmpTest.Start(fg1, fg4);
+//         Console.WriteLine("102__M_Right_little_finger.bmp: 100__M_Right_middle_finger.bmp");
+//         kmpTest.Start(fg3, fg4);
+//         Console.WriteLine("102__M_Right_little_finger.bmp: 102__M_Right_little_finger.bmp");
+//         kmpTest.Start(fg3, fg3);
+
+//     }
+// }
