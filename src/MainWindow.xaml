@@ -5,8 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:src"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="720" Width="1280" Background="DarkGray"
+        ResizeMode="NoResize">
     <Grid>
-
+        <TextBlock HorizontalAlignment="Center" Margin="0,31,0,0" TextWrapping="Wrap" Text="Aplikasi Tugas Besar 3 Strategi Algoritma 2023/2024" VerticalAlignment="Top" FontSize="40" Foreground="#FF120707"/>
+        <Image x:Name="InputImage" HorizontalAlignment="Left" Height="293" Margin="115,0,0,0" VerticalAlignment="Center" Width="215" Source="/EmptyPlaceholder.png"/>
+        <Image x:Name="InputImage_Copy" HorizontalAlignment="Center" Height="293" VerticalAlignment="Center" Width="216" Source="/EmptyPlaceholder.png"/>
+        <Button x:Name="ChooseIMGButton" Content="Pilih Citra" HorizontalAlignment="Left" Margin="122,584,0,0" VerticalAlignment="Top" FontSize="36" Width="200" Click="ChooseIMGButton_Click"/>
+        <RadioButton x:Name="BMRadioBtn" GroupName="MethodChoice" Content="Boyer-Moore" HorizontalAlignment="Left" Margin="339,589,0,0" VerticalAlignment="Top" Checked="BMRadioBtn_Checked" FontSize="20"/>
+        <RadioButton x:Name="KMPRadioBtn" GroupName="MethodChoice" Content="Knuth-Morris-Pratt" HorizontalAlignment="Left" Margin="339,615,0,0" VerticalAlignment="Top" Checked="KMPRadioBtn_Checked" FontSize="20"/>
+        <Button x:Name="SearchButton" Content="Cari!" HorizontalAlignment="Center" Margin="0,584,0,0" VerticalAlignment="Top" FontSize="36" Width="196" Click="SearchButton_Click" />
+        <TextBlock HorizontalAlignment="Left" Margin="756,542,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="24" Width="504" Height="99"><Run Text="Metode yang dipilih:"/><LineBreak/><Run Text="Waktu pencarian:"/><LineBreak/><Run Text="Persentase kecocokan:"/><LineBreak/><Run/></TextBlock>
+        <TextBlock x:Name="ChosenMethodLabel" HorizontalAlignment="Left" Margin="981,542,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="24" Width="244" Height="35"><Run Text="metode terpilih"/><LineBreak/><LineBreak/><Run/></TextBlock>
+        <TextBlock x:Name="EstimatedTimeLabel" HorizontalAlignment="Left" Margin="960,574,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="24" Width="200" Height="35"><Run Text="waktu"/><LineBreak/><Run/><LineBreak/><LineBreak/><Run/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="1165,574,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="24" Width="80" Height="35"><Run Text="ms"/><LineBreak/><Run/></TextBlock>
+        <TextBlock x:Name="MatchPercentLabel" HorizontalAlignment="Left" Margin="1008,606,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="24" Width="200" Height="35"><Run Text="persentase%"/><LineBreak/><Run/><LineBreak/><LineBreak/><Run/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="127,159,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="24" Width="195" Height="35"><Run Text="Sidik Jari Masukan"/><LineBreak/><Run/><LineBreak/><Run/></TextBlock>
+        <TextBlock HorizontalAlignment="Center" Margin="0,159,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="24" Width="172" Height="35"><Run Text="Sidik Jari Cocok"/><LineBreak/><Run/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="378,548,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="24" Width="108" Height="35"><Run Text="Metode"/><LineBreak/><Run/><LineBreak/><Run/><LineBreak/><Run/></TextBlock>
     </Grid>
 </Window>

@@ -2,22 +2,23 @@ using System.ComponentModel;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
 using SixLabors.ImageSharp.Processing;
+using static System.Net.Mime.MediaTypeNames;
 
 // Nuget add --> ImageSharp
-public class ImageConverter 
-{  
-    public bool[,] imageToBinary(Image<Rgba32> image) 
-    {   
+public class ImageConverter
+{
+    public bool[,] imageToBinary(Image<Rgba32> image)
+    {
         // Mengembalikan representasi gambar dalam bentuk array biner
 
         // Init 2d array
         bool[,] binaryArr = new bool[image.Height, image.Width];
-        
+
         // Isi array
         for (int y = 0; y < image.Height; y++)
-            for (int x = 0; x  < image.Width; x++)
+            for (int x = 0; x < image.Width; x++)
                 // Kalau pixel[i, j] hitam, isi array[j][i] dengan nilai True
-                binaryArr[y, x] = image[x, y].R == 0;   
+                binaryArr[y, x] = image[x, y].R == 0;
         return binaryArr;
     }
 
@@ -28,7 +29,7 @@ public class ImageConverter
 
         int row = binaryArr.GetLength(0);
         int col = binaryArr.GetLength(1);
-        
+
         List<string> ret = new List<string>();
         List<char> asciiList = new List<char>();
         for (int i = 0; i < row; i++)
@@ -65,19 +66,20 @@ public class ImageConverter
             {
                 // Pad dengan '00000000' kalau jumlah karakter ascii < 4
                 while (asciiList.Count < 4)
-                    asciiList.Add((char) Convert.ToInt32(new string("00000000"), 2));
+                    asciiList.Add((char)Convert.ToInt32(new string("00000000"), 2));
                 ret.Add(new string(asciiList.ToArray()));
             }
         }
         return ret;
     }
-    
+
     public List<string> convertImage(string path, string filename)
     {
         // Path dimulai dari bin\Debug\net8.0\ ...
-        try {
-            using (Image<Rgba32> image = Image.Load<Rgba32>(path + filename))
-            {   
+        try
+        {
+            using (Image<Rgba32> image = SixLabors.ImageSharp.Image.Load<Rgba32>(path + filename))
+            {
                 // Convert gambar ke dalam bentuk 'Grayscale'
                 image.Mutate(x => x.Grayscale());
 
@@ -90,22 +92,25 @@ public class ImageConverter
                 List<string> ascii = binaryToASCII(binaryArr);
                 return ascii;
             }
-        } catch (Exception e) {
-            Console.WriteLine($"{e.Message}");
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
         }
         return [];
     }
 }
 
 /*
-public class Test {
+public class Test
+{
     public static void Main(string[] args)
     {
         ImageConverter ic = new ImageConverter();
-        List<string> fg1 = ic.convertImage("../../../", "100__M_Left_index_finger.bmp");
-        List<string> fg2 = ic.convertImage("../../../", "100__M_Left_index_finger.bmp");
-        List<string> fg3 = ic.convertImage("../../../", "102__M_Right_little_finger.bmp");
-        List<string> fg4 = ic.convertImage("../../../", "100__M_Right_middle_finger.bmp");
+        List<string> fg1 = ic.convertImage("../../../ImageDataset/", "1717073090020.bmp");
+        List<string> fg2 = ic.convertImage("../../../ImageDataset/", "1717073090020.bmp");
+        List<string> fg3 = ic.convertImage("../../../ImageDataset/", "1717073090681.bmp");
+        List<string> fg4 = ic.convertImage("../../../ImageDataset/", "1717073091048.bmp");
         AlgoritmaPatternMatching kmpTest = new KMP();
 
         kmpTest.Start(fg1, fg2);

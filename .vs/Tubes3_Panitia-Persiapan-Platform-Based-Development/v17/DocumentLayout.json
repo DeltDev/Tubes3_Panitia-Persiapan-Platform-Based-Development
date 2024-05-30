@@ -3,36 +3,36 @@
   "WorkspaceRootPath": "D:\\Tubes3_Panitia-Persiapan-Platform-Based-Development\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{CEEBEAA2-9A12-486E-B65A-508728FE0E8D}|src\\src.csproj|d:\\tubes3_panitia-persiapan-platform-based-development\\src\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{CEEBEAA2-9A12-486E-B65A-508728FE0E8D}|src\\src.csproj|solutionrelative:src\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{CEEBEAA2-9A12-486E-B65A-508728FE0E8D}|src\\src.csproj|d:\\tubes3_panitia-persiapan-platform-based-development\\src\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CEEBEAA2-9A12-486E-B65A-508728FE0E8D}|src\\src.csproj|solutionrelative:src\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CEEBEAA2-9A12-486E-B65A-508728FE0E8D}|src\\src.csproj|d:\\tubes3_panitia-persiapan-platform-based-development\\src\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CEEBEAA2-9A12-486E-B65A-508728FE0E8D}|src\\src.csproj|solutionrelative:src\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CEEBEAA2-9A12-486E-B65A-508728FE0E8D}|src\\src.csproj|d:\\tubes3_panitia-persiapan-platform-based-development\\src\\convertimage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CEEBEAA2-9A12-486E-B65A-508728FE0E8D}|src\\src.csproj|solutionrelative:src\\convertimage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CEEBEAA2-9A12-486E-B65A-508728FE0E8D}|src\\src.csproj|d:\\tubes3_panitia-persiapan-platform-based-development\\src\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CEEBEAA2-9A12-486E-B65A-508728FE0E8D}|src\\src.csproj|solutionrelative:src\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Tubes3_Panitia-Persiapan-Platform-Based-Development\\src\\obj\\Debug\\net8.0-windows\\src_crsnrcjx_wpftmp.AssemblyInfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\obj\\Debug\\net8.0-windows\\src_crsnrcjx_wpftmp.AssemblyInfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Tubes3_Panitia-Persiapan-Platform-Based-Development\\src\\obj\\Debug\\net8.0-windows\\src_v2pmnc0t_wpftmp.AssemblyInfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\obj\\Debug\\net8.0-windows\\src_v2pmnc0t_wpftmp.AssemblyInfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CEEBEAA2-9A12-486E-B65A-508728FE0E8D}|src\\src.csproj|d:\\tubes3_panitia-persiapan-platform-based-development\\src\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{CEEBEAA2-9A12-486E-B65A-508728FE0E8D}|src\\src.csproj|solutionrelative:src\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Tubes3_Panitia-Persiapan-Platform-Based-Development\\src\\obj\\Debug\\net8.0-windows\\.NETCoreApp,Version=v8.0.AssemblyAttributes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\obj\\Debug\\net8.0-windows\\.NETCoreApp,Version=v8.0.AssemblyAttributes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CEEBEAA2-9A12-486E-B65A-508728FE0E8D}|src\\src.csproj|d:\\tubes3_panitia-persiapan-platform-based-development\\src\\convertimage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CEEBEAA2-9A12-486E-B65A-508728FE0E8D}|src\\src.csproj|solutionrelative:src\\convertimage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Tubes3_Panitia-Persiapan-Platform-Based-Development\\src\\obj\\Debug\\net8.0-windows\\src_crsnrcjx_wpftmp.AssemblyInfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\obj\\Debug\\net8.0-windows\\src_crsnrcjx_wpftmp.AssemblyInfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CEEBEAA2-9A12-486E-B65A-508728FE0E8D}|src\\src.csproj|d:\\tubes3_panitia-persiapan-platform-based-development\\src\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CEEBEAA2-9A12-486E-B65A-508728FE0E8D}|src\\src.csproj|solutionrelative:src\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CEEBEAA2-9A12-486E-B65A-508728FE0E8D}|src\\src.csproj|d:\\tubes3_panitia-persiapan-platform-based-development\\src\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CEEBEAA2-9A12-486E-B65A-508728FE0E8D}|src\\src.csproj|solutionrelative:src\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Tubes3_Panitia-Persiapan-Platform-Based-Development\\src\\obj\\Debug\\net8.0-windows\\src_21pi3csw_wpftmp.AssemblyInfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -46,24 +46,23 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 7,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\Tubes3_Panitia-Persiapan-Platform-Based-Development\\src\\Program.cs",
               "RelativeDocumentMoniker": "src\\Program.cs",
               "ToolTip": "D:\\Tubes3_Panitia-Persiapan-Platform-Based-Development\\src\\Program.cs",
               "RelativeToolTip": "src\\Program.cs",
-              "ViewState": "AQIAABYAAAAAAAAAAAArwDMAAAAGAAAA",
+              "ViewState": "AQIAAA0AAAAAAAAAAAArwDMAAAAGAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-30T12:13:32.792Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-30T12:13:32.792Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "AssemblyInfo.cs",
               "DocumentMoniker": "D:\\Tubes3_Panitia-Persiapan-Platform-Based-Development\\src\\AssemblyInfo.cs",
               "RelativeDocumentMoniker": "src\\AssemblyInfo.cs",
@@ -76,7 +75,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "src_crsnrcjx_wpftmp.AssemblyInfo.cs",
               "DocumentMoniker": "D:\\Tubes3_Panitia-Persiapan-Platform-Based-Development\\src\\obj\\Debug\\net8.0-windows\\src_crsnrcjx_wpftmp.AssemblyInfo.cs",
               "RelativeDocumentMoniker": "src\\obj\\Debug\\net8.0-windows\\src_crsnrcjx_wpftmp.AssemblyInfo.cs",
@@ -89,7 +88,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 3,
               "Title": ".NETCoreApp,Version=v8.0.AssemblyAttributes.cs",
               "DocumentMoniker": "D:\\Tubes3_Panitia-Persiapan-Platform-Based-Development\\src\\obj\\Debug\\net8.0-windows\\.NETCoreApp,Version=v8.0.AssemblyAttributes.cs",
               "RelativeDocumentMoniker": "src\\obj\\Debug\\net8.0-windows\\.NETCoreApp,Version=v8.0.AssemblyAttributes.cs",
@@ -102,20 +101,32 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "D:\\Tubes3_Panitia-Persiapan-Platform-Based-Development\\src\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "src\\MainWindow.xaml",
+              "ToolTip": "D:\\Tubes3_Panitia-Persiapan-Platform-Based-Development\\src\\MainWindow.xaml",
+              "RelativeToolTip": "src\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-05-30T11:57:33.873Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "ConvertImage.cs",
               "DocumentMoniker": "D:\\Tubes3_Panitia-Persiapan-Platform-Based-Development\\src\\ConvertImage.cs",
               "RelativeDocumentMoniker": "src\\ConvertImage.cs",
               "ToolTip": "D:\\Tubes3_Panitia-Persiapan-Platform-Based-Development\\src\\ConvertImage.cs",
               "RelativeToolTip": "src\\ConvertImage.cs",
-              "ViewState": "AQIAAFEAAAAAAAAAAAArwHYAAAACAAAA",
+              "ViewState": "AQIAAFwAAAAAAAAAAAAwwHsAAAACAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-30T12:03:59.186Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 2,
               "Title": "src_v2pmnc0t_wpftmp.AssemblyInfo.cs",
               "DocumentMoniker": "D:\\Tubes3_Panitia-Persiapan-Platform-Based-Development\\src\\obj\\Debug\\net8.0-windows\\src_v2pmnc0t_wpftmp.AssemblyInfo.cs",
               "RelativeDocumentMoniker": "src\\obj\\Debug\\net8.0-windows\\src_v2pmnc0t_wpftmp.AssemblyInfo.cs",
@@ -128,25 +139,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "MainWindow.xaml",
-              "DocumentMoniker": "D:\\Tubes3_Panitia-Persiapan-Platform-Based-Development\\src\\MainWindow.xaml",
-              "RelativeDocumentMoniker": "src\\MainWindow.xaml",
-              "ToolTip": "D:\\Tubes3_Panitia-Persiapan-Platform-Based-Development\\src\\MainWindow.xaml",
-              "RelativeToolTip": "src\\MainWindow.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-05-30T11:57:33.873Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "MainWindow.xaml.cs",
               "DocumentMoniker": "D:\\Tubes3_Panitia-Persiapan-Platform-Based-Development\\src\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "src\\MainWindow.xaml.cs",
               "ToolTip": "D:\\Tubes3_Panitia-Persiapan-Platform-Based-Development\\src\\MainWindow.xaml.cs",
               "RelativeToolTip": "src\\MainWindow.xaml.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAbAAAA",
+              "ViewState": "AQIAACQAAAAAAAAAAAAQwDsAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-30T11:57:29.317Z",
               "EditorCaption": ""
@@ -161,8 +160,7 @@
               "RelativeToolTip": "src\\obj\\Debug\\net8.0-windows\\src_21pi3csw_wpftmp.AssemblyInfo.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAALAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-30T12:09:48.049Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-30T12:09:48.049Z"
             }
           ]
         }
