@@ -1,5 +1,6 @@
 using System.Drawing;
 using System.Text;
+
 public class ConvertImage {
     /**
      *  Konversi gambar menjadi array ASCII.
@@ -115,10 +116,10 @@ public class ConvertImage {
 // public class Test {
 //     public static void Main(string[] args)
 //     {
-//         List<string> fg1 = ConvertImage.convertImage("../../../", "100__M_Left_index_finger.bmp");
-//         List<string> fg2 = ConvertImage.convertImage("../../../", "100__M_Left_index_finger.bmp");
-//         List<string> fg3 = ConvertImage.convertImage("../../../", "102__M_Right_little_finger.bmp");
-//         List<string> fg4 = ConvertImage.convertImage("../../../", "100__M_Right_middle_finger.bmp");
+//         List<string> fg1 = ConvertImage.convertImage("./../../ImageDataset/", "100__M_Left_index_finger.bmp");
+//         List<string> fg2 = ConvertImage.convertImage("./../../ImageDataset/", "100__M_Left_index_finger.bmp");
+//         List<string> fg3 = ConvertImage.convertImage("./../../ImageDataset/", "102__M_Right_little_finger.bmp");
+//         List<string> fg4 = ConvertImage.convertImage("./../../ImageDataset/", "100__M_Right_middle_finger.bmp");
 
 //         AlgoritmaPatternMatching kmpTest = new KMP();
 
