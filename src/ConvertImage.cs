@@ -1,7 +1,6 @@
 using System.Drawing;
 using System.Text;
-
-public class ConvertImage {
+public class ImageConverter {
     /**
      *  Konversi gambar menjadi array ASCII.
      *  
@@ -87,7 +86,6 @@ public class ConvertImage {
         }
 
         List<string> asciiArr = [];
-
         for (int y = 0; y < binaryArr.GetLength(0); y++)
         {
             List<char> binaryGroup = [];
@@ -112,27 +110,3 @@ public class ConvertImage {
         return asciiArr;
      }
 }
-
-// public class Test {
-//     public static void Main(string[] args)
-//     {
-//         List<string> fg1 = ConvertImage.convertImage("./../../../test/", "100__M_Left_index_finger.bmp");
-//         List<string> fg2 = ConvertImage.convertImage("./../../../test/", "100__M_Left_index_finger.bmp");
-//         List<string> fg3 = ConvertImage.convertImage("./../../../test/", "102__M_Right_little_finger.bmp");
-//         List<string> fg4 = ConvertImage.convertImage("./../../../test/", "100__M_Right_middle_finger.bmp");
-
-//         AlgoritmaPatternMatching kmpTest = new KMP();
-
-//         Console.WriteLine("100__M_Left_index_finger.bmp: 100__M_Left_index_finger.bmp");
-//         kmpTest.Start(fg1, fg2);
-//         Console.WriteLine("100__M_Left_index_finger.bmp: 102__M_Right_little_finger.bmp");
-//         kmpTest.Start(fg1, fg3);
-//         Console.WriteLine("100__M_Left_index_finger.bmp: 100__M_Right_middle_finger.bmp");
-//         kmpTest.Start(fg1, fg4);
-//         Console.WriteLine("102__M_Right_little_finger.bmp: 100__M_Right_middle_finger.bmp");
-//         kmpTest.Start(fg3, fg4);
-//         Console.WriteLine("102__M_Right_little_finger.bmp: 102__M_Right_little_finger.bmp");
-//         kmpTest.Start(fg3, fg3);
-
-//     }
-// }

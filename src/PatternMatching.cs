@@ -1,122 +1,65 @@
-﻿using System.Drawing;
-
-public abstract class AlgoritmaPatternMatching
+﻿public abstract class AlgoritmaPatternMatching
 {
-    public int HammingDistance(string text, string pattern)
-    {
-        // Mengembalikan nilai Hamming Distance dari pattern ke text,
-        // Asumsi panjang text s.d. panjang pattern.
-
-        int cnt = 0;
-        for (int i = 0; i < text.Length; i++)
-            if (text[i] != pattern[i])
-                cnt++;  
-        return cnt;
-    }
-
-    // public int LevenshteinDistance(string text, string pattern)
-    // {
-    //     // Kalo kedua string adalah sama, kembalikan 0.
-    //     if (text.Equals(pattern))
-    //         return 0;
-        
-    //     // Kalo ada string yang kosong, kembalikan panjang string yang lain.
-    //     if (text.Length == 0 || pattern.Length == 0)
-    //         return text.Length == 0 ? pattern.Length : text.Length;
-
-    //     if (text[^1] == pattern[^1])
-    //         return LevenshteinDistance(text[..^1], pattern[..^1]);
-
-    //     int insert = LevenshteinDistance(text, pattern[..^1]);
-    //     int remove = LevenshteinDistance(text[..^1], pattern);    
-    //     int replace = LevenshteinDistance(text[..^1], pattern[..^1]);
-
-    //     return 1 + Math.Min(Math.Min(insert, remove), replace);   
-    // }
-
-    // public int LCS(string text, string pattern)
-    // {
-    //     if (text.Equals(pattern))
-    //         return text.Length;
-        
-    //     if (text.Length == 0 || pattern.Length == 0)
-    //         return 0;
-        
-    //     if (text[text.Length - 1] == pattern[pattern.Length - 1])
-    //         return 1 + LCS(text[..^1], pattern[..^1]);
-        
-    //     return Math.Max(LCS(text[..^1], pattern), LCS(text, pattern[..^1]));
-    // }
-
-    public double HitungTingkatKemiripan(string text, string pattern) { return 1 - ((double)HammingDistance(text, pattern) / pattern.Length); }
-
+    /**
+     *  Mencari pola dalam sebuah teks.
+     *  
+     *  @param   {string} text - tempat dilakukannya pencarian pola.
+     *  @param   {string} pattern - pola yang ingin dicari dalam text.
+     *  @returns {List<int>} array yang berisi indeks awal kemunculan pola dalam text.
+     */
     public abstract List<int> Match(string text, string pattern);
-
-    public void Start(List<string> sidik_jari_db, List<string> sidik_jari_input) 
-    {   
-        string sidik_jari_db_str = string.Join("", sidik_jari_db);
-        string sidik_jari_input_str = string.Join("", sidik_jari_input);
-        
-        if (sidik_jari_db_str.Length != sidik_jari_input_str.Length)
-            throw new BedaLengthException("Besar ukuran sidik jari berbeda!");
-
-        double tingkatKemiripan = 1;
-        for (int i = 0; i < sidik_jari_input.Count; i++)
-        {
-            string currentStr = sidik_jari_input[i];
-            List<int> match = Match(sidik_jari_db_str, currentStr);
-
-            // Asumsikan ukuran ASCII fingerprint sama semua
-            if (match.Count == 0)
-            {
-                // bukan total match
-                tingkatKemiripan = HitungTingkatKemiripan(sidik_jari_db_str, sidik_jari_input_str);
-                break;
-            }
-        }
-        Console.WriteLine(tingkatKemiripan);
-    }
 }   
 
 public class KMP : AlgoritmaPatternMatching {
-    public override List<int> Match(string text, string pattern)
+    /**
+     *  Mencari border function dari pattern.
+     *  
+     *  @param   {string} pattern - teks yang ingin diproses menjadi border function.
+     *  @returns {List<int>} border function dari pattern.
+     */
+    public List<int> calcBorderFunction(string pattern)
     {
-        // Mengembalikan array yang berisi index 
-        // awal kemunculan pattern dalam text
-        List<int> matches = new List<int>();
-
-        // Isi border function
-        List<int> borderFunction = new List<int>();
+        List<int> borderFunction = new List<int>(pattern.Length);
         for (int k = 0; k < pattern.Length; k++)
             borderFunction.Add(0);
 
-        int i1 = 1, j1 = 0;
-        while (i1 < pattern.Length)
+        int i = 1, j = 0;
+        while (i < pattern.Length)
         {
-            if (pattern[j1] != pattern[i1])
+            if (pattern[j] != pattern[i])
             {
-                if (j1 > 0)
-                    j1 = borderFunction[j1 - 1];
+                if (j > 0)
+                    j = borderFunction[j - 1];
                 else
-                    i1++;
+                    i++;
             }
-            else if (pattern[i1] == pattern[j1])
-            {
-                i1++;
-                j1++;
-                borderFunction[i1 - 1] = j1;
-            }
+            else
+                borderFunction[i++] = ++j;
         }
-    
+        return borderFunction;
+    }
+
+    /**
+     *  Mencari pola dalam sebuah teks menggunakan algoritma Knuth-Morris-Pratt.
+     *  
+     *  @param   {string} text - tempat dilakukannya pencarian pola.
+     *  @param   {string} pattern - pola yang ingin dicari dalam text.
+     *  @returns {List<int>} array yang berisi indeks awal kemunculan pola dalam text.
+     */
+    public override List<int> Match(string text, string pattern)
+    {
+        // Isi border function.
+        List<int> borderFunction = calcBorderFunction(pattern);
+
+        // Cari pattern dalam text.
+        List<int> matches = new List<int>();
         int i = 0, j = 0;
         while (i < text.Length)
         {
             if (pattern[j] != text[i])
             {
                 if (j > 0)
-                {
                     j = borderFunction[j - 1];
-                }
                 else
                     i++;
             }
@@ -126,9 +69,12 @@ public class KMP : AlgoritmaPatternMatching {
                 {
                     matches.Add(i - j);
                     j = 0;
+                } 
+                else
+                {
+                    i++;
+                    j++;
                 }
-                i++;
-                j++;
             }
         }
         return matches;
@@ -137,16 +83,34 @@ public class KMP : AlgoritmaPatternMatching {
 
 public class BM : AlgoritmaPatternMatching 
 { 
+    /**
+     *  Mencari last occurence function dari pattern.
+     *  
+     *  @param   {string} pattern - teks yang ingin diproses menjadi last occurence function.
+     *  @returns {Dictionary<char, int>} last occurence function dari pattern.
+     */
+    public Dictionary<char, int> calcLastOccurenceFunction(string pattern) 
+    {
+        Dictionary<char, int> lof = new Dictionary<char, int>(); 
+        for (int i = 0; i < pattern.Length; i++)
+            lof[pattern[i]] = i;
+        return lof;
+    }
+
+    /**
+     *  Mencari pola dalam sebuah teks menggunakan algoritma Boyer-Moore.
+     *  
+     *  @param   {string} text - tempat dilakukannya pencarian pola.
+     *  @param   {string} pattern - pola yang ingin dicari dalam text.
+     *  @returns {List<int>} array yang berisi indeks awal kemunculan pola dalam text.
+     */
     public override List<int> Match(string text, string pattern) 
     {
-        // Mengembalikan array yang berisi index 
-        // awal kemunculan pattern dalam text
+        // Isi last occurence function.
+        Dictionary<char, int> charLastIdx = calcLastOccurenceFunction(pattern); 
+
+        // Cari pattern dalam text.
         List<int> matches = new List<int>();
-
-        Dictionary<char, int> charLastIdx = new Dictionary<char, int>(); 
-        for (int i = 0; i < pattern.Length; i++)
-            charLastIdx[pattern[i]] = i;
-
         int shift = 0;
         while (shift + pattern.Length <= text.Length)
         {
@@ -180,30 +144,3 @@ public class BM : AlgoritmaPatternMatching
         return matches;
     }
 }
-
-public class BedaLengthException : Exception
-{
-    public BedaLengthException() : base() {}
-    public BedaLengthException(string str) : base(str) {}
-    public BedaLengthException(string str, Exception innerException) : base(str, innerException) {}
-}   
-
-// public class Test {
-//     public static void Main(string[] args)
-//     {
-//         BM kmpTest = new("ABCABC");
-
-//         List<string> lst = ["ABCDEG", "ABCABC", "ABCDEF"];
-
-//         kmpTest.Start(lst);
-//         // for (int c = 0; c <= 9; c++)
-//         // {
-//         //     char d = (char) (c + '0');
-//         //     Console.WriteLine(d);
-//         // }
-//     }
-// }
-
-// TODO: Throw exception jika panjang text != panjang pattern
-//       Testing lebih lanjut
-//       Rapihin, tambahin komen
