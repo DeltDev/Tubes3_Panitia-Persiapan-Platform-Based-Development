@@ -250,12 +250,42 @@ public class DatabaseManager
     
     }
 
+    public List<string> getAllSidikJari()
+    {
+        using (var connection = new MySqlConnection(_connectionString))
+        {
+            connection.Open();
+            var users = connection.Query("SELECT * FROM sidik_jari");
+            List<string> result = new List<string>();
+            foreach (var user in users)
+            {
+                result.Add(user.berkas_citra);
+            }
+            return result;
+        }
+    }
+
+    public List<string> getAllNamaFromBiodata()
+    {
+        using (var connection = new MySqlConnection(_connectionString))
+        {
+            connection.Open();
+            var users = connection.Query("SELECT * FROM biodata");
+            List<string> result = new List<string>();
+            foreach (var user in users)
+            {
+                result.Add(user.nama);
+            }
+            return result;
+        }
+    }
+
     public void insertDataToSidikJari(){
         string insertDataQuery = @"
             INSERT INTO sidik_jari (berkas_citra, nama)
             VALUES (@FilePath, 'DUMMY_NAME')";
             
-        string filePath = @"CreateDatabase\test\100__M_Left_index_finger.bmp";
+        string filePath = @"test\1717073090681.bmp";
 
         using (var connection = new MySqlConnection(_connectionString))
         {
@@ -282,14 +312,18 @@ public class DatabaseManager
 // {
 //        static void Main(string[] args)
 //     {
-//         string connectionString = "Server=localhost;Database=stima;Uid=;Pwd=;";
+//         string connectionString = "Server=localhost;Database=stima;Uid=root;Pwd=password;";
 //         DatabaseManager dbManager = new DatabaseManager(connectionString);
-//         string name = dbManager.getNameFromSidikJari(@"..\test\100__M_Left_index_finger.bmp"); // diubah aja jadi path ke foto fingerprintnya
+//         List<string> data = dbManager.getAllSidikJari();
+//         foreach (string berkas in data) {
+//             Console.WriteLine(berkas);
+//         }
+//         // string name = dbManager.getNameFromSidikJari(@"..\test\100__M_Left_index_finger.bmp"); // diubah aja jadi path ke foto fingerprintnya
 //         // Console.WriteLine(name);
 //         // dbManager.printDataFromName(name);
-//         string NIK = dbManager.getNIKFromName(name);
-//         string pekerjaan = dbManager.getTanggalLahirFromNIK(NIK);
-//         Console.WriteLine(pekerjaan);
+//         // string NIK = dbManager.getNIKFromName(name);
+//         // string pekerjaan = dbManager.getTanggalLahirFromNIK(NIK);
+//         // Console.WriteLine(pekerjaan);
 //         // dbManager.insertData();
 //     }
 // }
