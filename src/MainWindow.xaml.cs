@@ -11,6 +11,11 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
+using System.Linq;
+using System;
+using System.IO;
+using System.Linq;
+using System.Windows;
 namespace src
 {
     /// <summary>
@@ -33,8 +38,28 @@ namespace src
             EstTimeLBL.Text = "";
             MatchPercentLBL = (TextBlock)FindName("MatchPercentLabel");
             MatchPercentLBL.Text = "";
+            this.Closing += ClearImages;
         }
+        private void ClearImages(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            try
+            {
+                string tempPath = "./../../../../temp";
+                var files = Directory.GetFiles(tempPath);
 
+                foreach (var file in files)
+                {
+                    if (!file.EndsWith(".gitkeep", StringComparison.OrdinalIgnoreCase))
+                    {
+                        File.Delete(file);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while cleaning up the temp folder: " + ex.Message);
+            }
+        }
         private void ChooseIMGButton_Click(object sender, RoutedEventArgs e)
         {
             //ganti logic buat pilih citra di sini
