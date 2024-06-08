@@ -10,7 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using System.IO;
 namespace src
 {
     /// <summary>
@@ -45,12 +45,13 @@ namespace src
             if (result == true)
             {
                 string imgSelectedName = imgSelect.FileName;
-
+                string imageName = System.IO.Path.GetFileName(imgSelectedName);
                 BitmapImage bitmap = new BitmapImage();
                 bitmap.BeginInit();
                 bitmap.UriSource = new Uri(imgSelectedName);
                 bitmap.EndInit();
                 InputImage.Source = bitmap;
+                System.IO.File.Copy(imgSelectedName, "../../../../temp/"+imageName,true);
             }
         }
 

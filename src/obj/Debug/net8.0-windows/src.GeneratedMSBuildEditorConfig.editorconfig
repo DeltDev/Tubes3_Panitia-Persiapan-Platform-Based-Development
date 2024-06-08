@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = src
-build_property.ProjectDir = D:\Tugas Besar 3 STIMA\Tubes3_Panitia-Persiapan-Platform-Based-Development\src\
+build_property.ProjectDir = D:\Tugas Besar 3 STIMA\src\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
