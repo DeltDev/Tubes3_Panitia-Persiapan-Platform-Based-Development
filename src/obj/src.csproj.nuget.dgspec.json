@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Tubes3_Panitia-Persiapan-Platform-Based-Development\\src\\src.csproj": {}
+    "D:\\Tugas Besar 3 STIMA\\Tubes3_Panitia-Persiapan-Platform-Based-Development\\src\\src.csproj": {}
   },
   "projects": {
-    "D:\\Tubes3_Panitia-Persiapan-Platform-Based-Development\\src\\src.csproj": {
+    "D:\\Tugas Besar 3 STIMA\\Tubes3_Panitia-Persiapan-Platform-Based-Development\\src\\src.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Tubes3_Panitia-Persiapan-Platform-Based-Development\\src\\src.csproj",
+        "projectUniqueName": "D:\\Tugas Besar 3 STIMA\\Tubes3_Panitia-Persiapan-Platform-Based-Development\\src\\src.csproj",
         "projectName": "src",
-        "projectPath": "D:\\Tubes3_Panitia-Persiapan-Platform-Based-Development\\src\\src.csproj",
+        "projectPath": "D:\\Tugas Besar 3 STIMA\\Tubes3_Panitia-Persiapan-Platform-Based-Development\\src\\src.csproj",
         "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
-        "outputPath": "D:\\Tubes3_Panitia-Persiapan-Platform-Based-Development\\src\\obj\\",
+        "outputPath": "D:\\Tugas Besar 3 STIMA\\Tubes3_Panitia-Persiapan-Platform-Based-Development\\src\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
