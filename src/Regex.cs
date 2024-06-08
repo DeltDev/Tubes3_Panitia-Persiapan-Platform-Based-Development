@@ -24,14 +24,20 @@ public class Regex
     {
         string textCompared = text.ToLower();
         string patternCompared = Translate(pattern);
-
-        if (ContainsAllAlphabets(textCompared, patternCompared))
-        {
-            return text;
-        }
-        else
+        if (!isWordLengthSame(text, pattern))
         {
             return "Not match";
+        }
+        else 
+        {
+            if (ContainsAllAlphabets(textCompared, patternCompared))
+            {
+                return text;
+            }
+            else
+            {
+                return "Not match";
+            }
         }
     }
 
@@ -48,14 +54,41 @@ public class Regex
         return true;
     }
 
-//     class Program
+    private static bool isWordLengthSame(string text, string pattern)
+    {
+        static int CountWords(string text)
+        {
+            int wordCount = 0;
+            bool isWord = false;
+
+            foreach (char c in text)
+            {
+                if (char.IsLetterOrDigit(c))
+                {
+                    if (!isWord)
+                    {
+                        wordCount++;
+                        isWord = true;
+                    }
+                }
+                else if (char.IsWhiteSpace(c))
+                {
+                    isWord = false;
+                }
+            }
+            return wordCount;
+        }
+        return CountWords(text) == CountWords(pattern);
+    }
+}
+
+// class Program
 // {
 //       static void Main(string[] args)
 //     {
 //         string text = "Bintang Dwi Marthen";
-//         string pattern = "b1ntN6 Dw mrthn";
+//         string pattern = "ab1ntN6 Dw mrthn";
 
-//         Console.WriteLine("Match Name: " + MatchName(text, pattern));
+//         Console.WriteLine("Match Name: " + BahasaAlay.MatchName(text, pattern));
 //     }
 // }
-}
