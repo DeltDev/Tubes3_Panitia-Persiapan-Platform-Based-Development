@@ -1,7 +1,7 @@
 using System;
 using System.Text.RegularExpressions;
 
-public class Regex
+public class BahasaAlay
 {
     public static string Translate(string input)
     {
@@ -20,23 +20,23 @@ public class Regex
         return result;
     }
 
-    public static string MatchName(string text, string pattern)
+    public static bool MatchName(string text, string pattern)
     {
         string textCompared = text.ToLower();
         string patternCompared = Translate(pattern);
         if (!isWordLengthSame(text, pattern))
         {
-            return "Not match";
+            return false;
         }
         else 
         {
             if (ContainsAllAlphabets(textCompared, patternCompared))
             {
-                return text;
+                return true;
             }
             else
             {
-                return "Not match";
+                return false;
             }
         }
     }
@@ -52,6 +52,18 @@ public class Regex
             }
         }
         return true;
+    }
+
+    public static string ResultText(List<string> dataname, string pattern)
+    {
+        foreach (string name in dataname)
+        {
+            if (MatchName(name, pattern))
+            {
+                return name;
+            }
+        }
+        return "Not found";
     }
 
     private static bool isWordLengthSame(string text, string pattern)
@@ -86,9 +98,15 @@ public class Regex
 // {
 //       static void Main(string[] args)
 //     {
-//         string text = "Bintang Dwi Marthen";
-//         string pattern = "ab1ntN6 Dw mrthn";
+//         string connectionString = "Server=localhost;Database=stima;Uid=root;Pwd=Radhita7*;";
+//         DatabaseManager dbManager = new DatabaseManager(connectionString);
+//         List<string> data = dbManager.getAllNamaFromBiodata();
+//         foreach (string berkas in data) {
+//             Console.WriteLine(berkas);
+//         }
 
-//         Console.WriteLine("Match Name: " + BahasaAlay.MatchName(text, pattern));
+//         string getname = dbManager.getNameFromSidikJari(@"test\1717073090681.bmp");
+//         string realname = BahasaAlay.ResultText(data, getname);
+//         dbManager.printDataFromName(realname);
 //     }
 // }
