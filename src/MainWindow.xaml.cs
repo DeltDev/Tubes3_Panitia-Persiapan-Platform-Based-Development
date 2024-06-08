@@ -51,7 +51,9 @@ namespace src
                 bitmap.UriSource = new Uri(imgSelectedName);
                 bitmap.EndInit();
                 InputImage.Source = bitmap;
-                System.IO.File.Copy(imgSelectedName, "../../../../temp/"+imageName,true);
+                string directory = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+                string tempPath = System.IO.Path.Combine(directory, "./../../../../temp", imageName);
+                System.IO.File.Copy(imgSelectedName, tempPath, true);
             }
         }
 

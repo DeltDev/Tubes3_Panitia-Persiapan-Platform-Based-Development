@@ -2174,26 +2174,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Lenovo\\.nuget\\packages\\": {}
+    "C:\\Users\\DIERO PURNAMA\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Tugas Besar 3 STIMA\\src\\src.csproj",
+      "projectUniqueName": "C:\\Users\\DIERO PURNAMA\\Documents\\CODING\\C#\\Tubes3_Panitia-Persiapan-Platform-Based-Development\\src\\src.csproj",
       "projectName": "src",
-      "projectPath": "D:\\Tugas Besar 3 STIMA\\src\\src.csproj",
-      "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
-      "outputPath": "D:\\Tugas Besar 3 STIMA\\src\\obj\\",
+      "projectPath": "C:\\Users\\DIERO PURNAMA\\Documents\\CODING\\C#\\Tubes3_Panitia-Persiapan-Platform-Based-Development\\src\\src.csproj",
+      "packagesPath": "C:\\Users\\DIERO PURNAMA\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\DIERO PURNAMA\\Documents\\CODING\\C#\\Tubes3_Panitia-Persiapan-Platform-Based-Development\\src\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\DIERO PURNAMA\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0-windows"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -2257,7 +2255,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
