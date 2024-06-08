@@ -278,18 +278,18 @@ public class DatabaseManager
     }
 }
 
-class Program
-{
-       static void Main(string[] args)
-    {
-        string connectionString = "Server=localhost;Database=stima;Uid=;Pwd=;";
-        DatabaseManager dbManager = new DatabaseManager(connectionString);
-        string name = dbManager.getNameFromSidikJari(@"CreateDatabase\test\100__M_Left_index_finger.bmp");
-        // Console.WriteLine(name);
-        // dbManager.printDataFromName(name);
-        string NIK = dbManager.getNIKFromName(name);
-        string pekerjaan = dbManager.getTanggalLahirFromNIK(NIK);
-        Console.WriteLine(pekerjaan);
-        // dbManager.insertData();
-    }
-}
+// class Program
+// {
+//        static void Main(string[] args)
+//     {
+//         string connectionString = "Server=localhost;Database=stima;Uid=;Pwd=;";
+//         DatabaseManager dbManager = new DatabaseManager(connectionString);
+//         string name = dbManager.getNameFromSidikJari(@"..\test\100__M_Left_index_finger.bmp"); // diubah aja jadi path ke foto fingerprintnya
+//         // Console.WriteLine(name);
+//         // dbManager.printDataFromName(name);
+//         string NIK = dbManager.getNIKFromName(name);
+//         string pekerjaan = dbManager.getTanggalLahirFromNIK(NIK);
+//         Console.WriteLine(pekerjaan);
+//         // dbManager.insertData();
+//     }
+// }
