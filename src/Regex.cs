@@ -1,7 +1,7 @@
 using System;
 using System.Text.RegularExpressions;
 
-public class BahasaAlay
+public class Regex
 {
     public static string Translate(string input)
     {
