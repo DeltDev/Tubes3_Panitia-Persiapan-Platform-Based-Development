@@ -144,8 +144,24 @@ namespace src
 
                 List<string> data = dbManager.getAllNamaFromBiodata();
                 string realname = Regex.ResultText(data, getname);
+
+                // BIODATA
+                string NIK = dbManager.getNIKFromName(realname);
+                string nama = realname;
+                string tempat_lahir = dbManager.getTempatLahirFromNIK(NIK);
+                string tanggal_lahir = dbManager.getTanggalLahirFromNIK(NIK);
+                string jenis_kelamin = dbManager.getJenisKelaminFromNIK(NIK);
+                string golongan_darah = dbManager.getGolonganDarahFromNIK(NIK);
+                string alamat = dbManager.getAlamatFromNIK(NIK);
+                string agama = dbManager.getAgamaFromNIK(NIK);
+                string status_perkawinan = dbManager.getStatusPerkawinanFromNIK(NIK);
+                string pekerjaan = dbManager.getPekerjaanFromNIK(NIK);
+                string kewarganegaraan = dbManager.getKewarganegaraanFromNIK(NIK);
+
+                // SIDIK JARI PALING MIRIP
+                string pathSidikJari = output.Key;
+
                 MessageBox.Show($"Tingkat kemiripan: {output.Value}");
-                dbManager.printDataFromName(realname);
             }
             else
             {
