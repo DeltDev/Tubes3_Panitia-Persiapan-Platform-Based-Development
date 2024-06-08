@@ -139,6 +139,8 @@ public class BM : AlgoritmaPatternMatching
                     else 
                         shift += pattern.Length + 1;
                 }
+                else
+                    break;
             }
             else
             {

@@ -1,3 +1,5 @@
+using System.IO;
+
 /**
  *  Kelas untuk melakukan pencocokan sidik jari.
  */
@@ -48,6 +50,16 @@ public class PencocokSidikJari
     {
         // Inisialisasi
         sidik_jari_masukan = ImageConverter.convertImage(input);
+
+        for (int i = 0; i < db.Count; i++)
+        {
+            string directory = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+            string tempPath = System.IO.Path.Combine(directory, "./../../../../test", db[i]);   
+                                                                                                    
+            tempPath = System.IO.Path.GetFullPath(tempPath);
+
+            db[i] = tempPath;
+        }
         list_sidik_jari_db = new List<string>(db);
 
         // Bandingin sidik jari masukan ke semua sidik jari dalam database

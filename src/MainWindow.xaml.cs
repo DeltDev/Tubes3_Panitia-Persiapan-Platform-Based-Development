@@ -119,7 +119,7 @@ namespace src
                                                                                                  //MessageBox.Show($"The image filename is: {tempPath}");
 
             tempPath = System.IO.Path.GetFullPath(tempPath);
-            MessageBox.Show($"Path: {tempPath}");
+
             //algoritma utama saat searching
             string connectionString = $"Server=localhost;Database=stima3;Uid=root;Pwd=;";
             DatabaseManager dbManager = new DatabaseManager(connectionString);
@@ -139,7 +139,7 @@ namespace src
             // Output hasil
             if (output.Value > 0.6)
             {
-                string sidik_jari_akhir = output.Key;
+                string sidik_jari_akhir = System.IO.Path.GetFileName(output.Key);
                 string getname = dbManager.getNameFromSidikJari(sidik_jari_akhir);
 
                 List<string> data = dbManager.getAllNamaFromBiodata();
