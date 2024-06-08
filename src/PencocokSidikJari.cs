@@ -1,38 +1,70 @@
+/**
+ *  Kelas untuk melakukan pencocokan sidik jari.
+ */
 public class PencocokSidikJari 
 {
+    private static List<string> sidik_jari_masukan = new List<string>();
+    private static List<string> list_sidik_jari_db = new List<string>();
+
     /**
-     *  Mengembalikan tingkat kemiripan antara dua sidik jari.
+     *  Melakukan pencocokan antara sidik jari masukan dengan salah satu sidik jari dalam database.
      *
-     *  @param   {string} path_sidik_jari_db - path file sidik jari dari database.
-     *  @param   {string} filename_sidik_jari_db - nama file sidik jari dari database.
-     *  @param   {string} path_sidik_jari_masukan - path file sidik jari masukan pengguna.
-     *  @param   {string} filename_sidik_jari_masukan - nama file sidik jari masukan pengguna.
+     *  @param   {string} path_sidik_jari_db - path menuju ke sidik jari dalam database
      *  @param   {AlgoritmaPatternMatching} algoritma - algoritma yang digunakan untuk pencocokan sidik jari.
      *  @returns {double} tingkat kemiripan kedua sidik jari.
      */
-    public static double Cocok(string path_sidik_jari_db, string filename_sidik_jari_db,
-                               string path_sidik_jari_masukan, string filename_sidik_jari_masukan,
-                               AlgoritmaPatternMatching algoritma)
+    public static double Cocok(string path_sidik_jari_db, AlgoritmaPatternMatching algoritma)
     {
         // Konversi citra sidik jari menjadi ASCII.
-        List<string> sidik_jari_db = ImageConverter.convertImage(path_sidik_jari_db, filename_sidik_jari_db);
-        List<string> sidik_jari_masukan = ImageConverter.convertImage(path_sidik_jari_masukan, filename_sidik_jari_masukan);
+        List<string> sidik_jari_db = ImageConverter.convertImage(path_sidik_jari_db);
         string sidik_jari_db_str = string.Join("", sidik_jari_db);
         string sidik_jari_masukan_str = string.Join("", sidik_jari_masukan);
-
-        // Lempar exception jika panjang string berbeda karena
-        // perhitungan tingkat kemiripan menggunakan hamming distance.
+        
+        // Lempar exception jika panjang string berbeda karena perhitungan tingkat kemiripan 
+        // menggunakan hamming distance.
         if (sidik_jari_db_str.Length != sidik_jari_masukan_str.Length)
             throw new Exception("Ukuran sidik jari berbeda!");
 
-        // Cari tingkat kemiripan kedua sidik jari, jika "exact match" maka
-        // tingkat kemiripan adalah 1, jika bukan, maka akan dihitung menggunakan
-        // hamming distance.
+        // Cari tingkat kemiripan kedua sidik jari, jika "exact match" maka tingkat kemiripan
+        // adalah 1, jika bukan exact match, maka akan dihitung menggunakan hamming distance.
         double tingkatKemiripan = 1;
         for (int i = 0; i < sidik_jari_masukan.Count && tingkatKemiripan == 1; i++)
             if (algoritma.Match(sidik_jari_db_str, sidik_jari_masukan[i]).Count == 0)
                 tingkatKemiripan = HitungTingkatKemiripan(sidik_jari_db_str, sidik_jari_masukan_str);
+
         return tingkatKemiripan;
+    }
+
+    /**
+     *  Melakukan pencocokan antara sidik jari masukan dengan seluruh sidik jari dari database.
+     *
+     *  @param   {string} input - path menuju ke file sidik jari masukan.
+     *  @param   {List<string>} db - list yang berisi path file sidik jari dari database. 
+     *  @param   {AlgoritmaPatternMatching} algoritma - algoritma yang digunakan untuk pencocokan sidik jari.
+     *  @returns {KeyValuePair<string, double>} pasangan sidik jari dengan tingkat kemiripan dengan nilai
+     *                                          tingkat kemiripan yang paling tinggi.
+     */
+    public static KeyValuePair<string, double> MulaiPencocokan(string input, List<string> db, AlgoritmaPatternMatching algoritma)
+    {
+        // Inisialisasi
+        sidik_jari_masukan = ImageConverter.convertImage(input);
+        list_sidik_jari_db = new List<string>(db);
+
+        // Bandingin sidik jari masukan ke semua sidik jari dalam database
+        Dictionary<string, double> hasil_akhir = new Dictionary<string, double>();
+        foreach (string path_sidik_jari_db in list_sidik_jari_db) 
+            hasil_akhir.Add(path_sidik_jari_db, Cocok(path_sidik_jari_db, algoritma));
+
+        // Cari tingkat kemiripan tertinggi
+        var maxKvp = hasil_akhir.FirstOrDefault();
+        foreach (var kvp in hasil_akhir)
+        {
+            double tingkatKemiripan = kvp.Value;
+            if (tingkatKemiripan > maxKvp.Value)
+                maxKvp = kvp;
+        }
+
+        return maxKvp;
     }
 
     // --------------- Tingkat Kemiripan ---------------
@@ -66,14 +98,3 @@ public class PencocokSidikJari
      */
     public static double HitungTingkatKemiripan(string t1, string t2) { return 1 - ((double) HammingDistance(t1, t2) / t2.Length); }
 }
-
-// Testing Class
-// public class Test {
-//     public static void Main(string[] args)
-//     {
-//         double tingkatKemiripan = PencocokSidikJari.Cocok("./../../../test/", "100__M_Right_middle_finger.bmp",
-//                                                           "./../../../test/", "100__M_Left_index_finger.bmp",
-//                                                           new KMP());
-//         Console.WriteLine($"Tingkat kemiripan: {tingkatKemiripan}");
-//     }
-// }

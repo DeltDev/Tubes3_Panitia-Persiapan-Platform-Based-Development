@@ -1,4 +1,7 @@
-﻿public abstract class AlgoritmaPatternMatching
+﻿/**
+ *  Kelas abstrak untuk algoritma pencocokan string.
+ */
+public abstract class AlgoritmaPatternMatching
 {
     /**
      *  Mencari pola dalam sebuah teks.
@@ -10,6 +13,9 @@
     public abstract List<int> Match(string text, string pattern);
 }   
 
+/**
+ *  Kelas untuk algoritma pencocokan string Knuth-Morris-Pratt (KMP).
+ */
 public class KMP : AlgoritmaPatternMatching {
     /**
      *  Mencari border function dari pattern.
@@ -81,6 +87,9 @@ public class KMP : AlgoritmaPatternMatching {
     }
 }
 
+/**
+ *  Kelas untuk algoritma pencocokan string Boyer-Moore (BM).
+ */
 public class BM : AlgoritmaPatternMatching 
 { 
     /**
@@ -130,8 +139,6 @@ public class BM : AlgoritmaPatternMatching
                     else 
                         shift += pattern.Length + 1;
                 }
-                else
-                    break;
             }
             else
             {

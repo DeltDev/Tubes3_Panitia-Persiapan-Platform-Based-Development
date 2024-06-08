@@ -1,5 +1,9 @@
 using System.Drawing;
 using System.Text;
+
+/**
+ *  Kelas untuk konversi gambar menjadi array ASCII.
+ */
 public class ImageConverter {
     /**
      *  Konversi gambar menjadi array ASCII.
@@ -8,10 +12,10 @@ public class ImageConverter {
      *  @param   {string} filename - nama file gambar yang ingin dikonversi.
      *  @returns {List<string>} Hasil konversi gambar menjadi array ASCII.
      */
-    public static List<string> convertImage(string path, string filename) 
+    public static List<string> convertImage(string path) 
     {
         // Load gambar.
-        Bitmap image = new Bitmap(path + filename);
+        Bitmap image = new Bitmap(path);
 
         // Konversi gambar menjadi gambar hitam putih.
         Bitmap bnw = ConvertImageToBnW(image);
