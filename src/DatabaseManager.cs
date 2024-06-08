@@ -208,19 +208,26 @@ public class DatabaseManager
         {
             connection.Open();
             var users = connection.Query("SELECT * FROM biodata WHERE nama = @nama", new { nama = Name });
-            foreach (var user in users)
+            if (users.Count() == 0)
             {
-                Console.WriteLine(user.NIK);
-                Console.WriteLine(user.nama);
-                Console.WriteLine(user.tempat_lahir);
-                Console.WriteLine(user.tanggal_lahir);
-                Console.WriteLine(user.jenis_kelamin);
-                Console.WriteLine(user.golongan_darah);
-                Console.WriteLine(user.alamat);
-                Console.WriteLine(user.agama);
-                Console.WriteLine(user.status_perkawinan);
-                Console.WriteLine(user.pekerjaan);
-                Console.WriteLine(user.kewarganegaraan);
+                Console.WriteLine("No data found with the inserted name");
+            }
+            else
+            {
+                foreach (var user in users)
+                {
+                    Console.WriteLine(user.NIK);
+                    Console.WriteLine(user.nama);
+                    Console.WriteLine(user.tempat_lahir);
+                    Console.WriteLine(user.tanggal_lahir);
+                    Console.WriteLine(user.jenis_kelamin);
+                    Console.WriteLine(user.golongan_darah);
+                    Console.WriteLine(user.alamat);
+                    Console.WriteLine(user.agama);
+                    Console.WriteLine(user.status_perkawinan);
+                    Console.WriteLine(user.pekerjaan);
+                    Console.WriteLine(user.kewarganegaraan);
+                }
             }
         }
     
@@ -232,19 +239,26 @@ public class DatabaseManager
         {
             connection.Open();
             var users = connection.Query("SELECT * FROM biodata WHERE NIK = @NIK", new { NIK });
-            foreach (var user in users)
+            if (users.Count() == 0)
             {
-                Console.WriteLine(user.NIK);
-                Console.WriteLine(user.nama);
-                Console.WriteLine(user.tempat_lahir);
-                Console.WriteLine(user.tanggal_lahir);
-                Console.WriteLine(user.jenis_kelamin);
-                Console.WriteLine(user.golongan_darah);
-                Console.WriteLine(user.alamat);
-                Console.WriteLine(user.agama);
-                Console.WriteLine(user.status_perkawinan);
-                Console.WriteLine(user.pekerjaan);
-                Console.WriteLine(user.kewarganegaraan);
+                Console.WriteLine("No data found with the inserted NIK");
+            }
+            else 
+            {
+                foreach (var user in users)
+                {
+                    Console.WriteLine(user.NIK);
+                    Console.WriteLine(user.nama);
+                    Console.WriteLine(user.tempat_lahir);
+                    Console.WriteLine(user.tanggal_lahir);
+                    Console.WriteLine(user.jenis_kelamin);
+                    Console.WriteLine(user.golongan_darah);
+                    Console.WriteLine(user.alamat);
+                    Console.WriteLine(user.agama);
+                    Console.WriteLine(user.status_perkawinan);
+                    Console.WriteLine(user.pekerjaan);
+                    Console.WriteLine(user.kewarganegaraan);
+                }
             }
         }
     
