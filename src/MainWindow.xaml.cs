@@ -118,7 +118,8 @@ namespace src
             string tempPath = System.IO.Path.Combine(directory, "./../../../../temp", imageName);//gabungkan path temp dengan nama file
                                                                                                  //MessageBox.Show($"The image filename is: {tempPath}");
 
-
+            tempPath = System.IO.Path.GetFullPath(tempPath);
+            MessageBox.Show($"Path: {tempPath}");
             //algoritma utama saat searching
             string connectionString = $"Server=localhost;Database=stima3;Uid=root;Pwd=;";
             DatabaseManager dbManager = new DatabaseManager(connectionString);
