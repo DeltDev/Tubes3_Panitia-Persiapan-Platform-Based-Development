@@ -114,5 +114,3 @@ public class ImageConverter {
         return asciiArr;
      }
 }
-
-//aaaaaaaaaaaaa

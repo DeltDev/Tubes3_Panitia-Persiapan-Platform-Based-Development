@@ -1,4 +1,6 @@
-﻿using System.Text;
+﻿using Microsoft.Win32;
+using System.Drawing;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -36,7 +38,20 @@ namespace src
         private void ChooseIMGButton_Click(object sender, RoutedEventArgs e)
         {
             //ganti logic buat pilih citra di sini
-            MessageBox.Show("Ini buat ganti citra", "Pilih Citra", MessageBoxButton.OK, MessageBoxImage.Information);
+            OpenFileDialog imgSelect = new OpenFileDialog();
+            imgSelect.Filter = ".bmp Image Files|*.bmp";
+            bool? result = imgSelect.ShowDialog();
+
+            if (result == true)
+            {
+                string imgSelectedName = imgSelect.FileName;
+
+                BitmapImage bitmap = new BitmapImage();
+                bitmap.BeginInit();
+                bitmap.UriSource = new Uri(imgSelectedName);
+                bitmap.EndInit();
+                InputImage.Source = bitmap;
+            }
         }
 
         private void BMRadioBtn_Checked(object sender, RoutedEventArgs e)
