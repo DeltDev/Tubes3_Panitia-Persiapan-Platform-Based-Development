@@ -7,6 +7,7 @@ public class Regex
     {
         string result = input;
         result = result.Replace("4", "a");
+        result = result.Replace("2", "z");
         result = result.Replace("1", "i");
         result = result.Replace("3", "e");
         result = result.Replace("6", "g");
