@@ -52,28 +52,6 @@ namespace src
             MarriageStatusLabel.Text = "";
             JobLabel.Text = "";
             NationalityLabel.Text = "";
-            this.Closing += ClearImages;
-        }
-        private void ClearImages(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            try
-            {
-                string directory = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
-                string tempPath = System.IO.Path.Combine(directory, "./../../../../temp");
-                var files = Directory.GetFiles(tempPath);
-
-                foreach (var file in files)
-                {
-                    if (!file.EndsWith(".gitkeep", StringComparison.OrdinalIgnoreCase))
-                    {
-                        File.Delete(file);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("An error occurred while cleaning up the temp folder: " + ex.Message);
-            }
         }
         private void ChooseIMGButton_Click(object sender, RoutedEventArgs e)
         {
@@ -149,68 +127,76 @@ namespace src
             }
             // Sidik jari db
             List<string> list_sidik_jari_db = dbManager.getAllSidikJari();
-            // Mulai pencarian
-            KeyValuePair<string, double> output = PencocokSidikJari.MulaiPencocokan(tempPath, list_sidik_jari_db, alg);
-            // Output hasil
-            if (output.Value > 0.6)
+            
+            try
             {
-                string sidik_jari_akhir = System.IO.Path.GetFileName(output.Key);
-                BitmapImage bitmap = new BitmapImage();
-                bitmap.BeginInit();
-                bitmap.UriSource = new Uri(output.Key);
-                bitmap.EndInit();
-                OutputImage.Source = bitmap;
-                string getname = dbManager.getNameFromSidikJari(sidik_jari_akhir);
+                // Mulai pencarian
+                KeyValuePair<string, double> output = PencocokSidikJari.MulaiPencocokan(tempPath, list_sidik_jari_db, alg);
+                // Output hasil
+                if (output.Value > 0.6)
+                {
+                    string sidik_jari_akhir = System.IO.Path.GetFileName(output.Key);
+                    BitmapImage bitmap = new BitmapImage();
+                    bitmap.BeginInit();
+                    bitmap.UriSource = new Uri(output.Key);
+                    bitmap.EndInit();
+                    OutputImage.Source = bitmap;
+                    string getname = dbManager.getNameFromSidikJari(sidik_jari_akhir);
 
-                List<string> data = dbManager.getAllNamaFromBiodata();
-                string realname = Regex.ResultText(data, getname);
+                    List<string> data = dbManager.getAllNamaFromBiodata();
+                    string realname = Regex.ResultText(data, getname);
 
-                // BIODATA
-                string NIK = dbManager.getNIKFromName(realname);
-                string nama = realname;
-                string tempat_lahir = dbManager.getTempatLahirFromNIK(NIK);
-                string tanggal_lahir = dbManager.getTanggalLahirFromNIK(NIK);
-                string jenis_kelamin = dbManager.getJenisKelaminFromNIK(NIK);
-                string golongan_darah = dbManager.getGolonganDarahFromNIK(NIK);
-                string alamat = dbManager.getAlamatFromNIK(NIK);
-                string agama = dbManager.getAgamaFromNIK(NIK);
-                string status_perkawinan = dbManager.getStatusPerkawinanFromNIK(NIK);
-                string pekerjaan = dbManager.getPekerjaanFromNIK(NIK);
-                string kewarganegaraan = dbManager.getKewarganegaraanFromNIK(NIK);
+                    // BIODATA
+                    string NIK = dbManager.getNIKFromName(realname);
+                    string nama = realname;
+                    string tempat_lahir = dbManager.getTempatLahirFromNIK(NIK);
+                    string tanggal_lahir = dbManager.getTanggalLahirFromNIK(NIK);
+                    string jenis_kelamin = dbManager.getJenisKelaminFromNIK(NIK);
+                    string golongan_darah = dbManager.getGolonganDarahFromNIK(NIK);
+                    string alamat = dbManager.getAlamatFromNIK(NIK);
+                    string agama = dbManager.getAgamaFromNIK(NIK);
+                    string status_perkawinan = dbManager.getStatusPerkawinanFromNIK(NIK);
+                    string pekerjaan = dbManager.getPekerjaanFromNIK(NIK);
+                    string kewarganegaraan = dbManager.getKewarganegaraanFromNIK(NIK);
 
-                //Display Biodata
-                NIKLabel.Text = NIK;
-                NameLabel.Text = nama;
-                BornPlaceLabel.Text = tempat_lahir;
-                BirthDateLabel.Text = tanggal_lahir;
-                GenderLabel.Text = jenis_kelamin;
-                BloodTypeLabel.Text = golongan_darah;
-                AddressLabel.Text = alamat;
-                ReligionLabel.Text = agama;
-                MarriageStatusLabel.Text = status_perkawinan;
-                JobLabel.Text = pekerjaan;
-                NationalityLabel.Text = kewarganegaraan;
-                // SIDIK JARI PALING MIRIP
-                string pathSidikJari = output.Key;
-                timer.Stop();
-                var elapsedms = timer.ElapsedMilliseconds;//akhiri timer
-                EstTimeLBL.Text = elapsedms.ToString() +" ms";
-                string percentageFormat = "0.00000";
-                MatchPercentLBL.Text = (output.Value * 100).ToString(percentageFormat) + " %";
-                //MessageBox.Show($"Tingkat kemiripan: {output.Value}");
+                    //Display Biodata
+                    NIKLabel.Text = NIK;
+                    NameLabel.Text = nama;
+                    BornPlaceLabel.Text = tempat_lahir;
+                    BirthDateLabel.Text = tanggal_lahir;
+                    GenderLabel.Text = jenis_kelamin;
+                    BloodTypeLabel.Text = golongan_darah;
+                    AddressLabel.Text = alamat;
+                    ReligionLabel.Text = agama;
+                    MarriageStatusLabel.Text = status_perkawinan;
+                    JobLabel.Text = pekerjaan;
+                    NationalityLabel.Text = kewarganegaraan;
+                    // SIDIK JARI PALING MIRIP
+                    string pathSidikJari = output.Key;
+                    timer.Stop();
+                    var elapsedms = timer.ElapsedMilliseconds;//akhiri timer
+                    EstTimeLBL.Text = elapsedms.ToString() +" ms";
+                    string percentageFormat = "0.00000";
+                    MatchPercentLBL.Text = (output.Value * 100).ToString(percentageFormat) + " %";
+                    //MessageBox.Show($"Tingkat kemiripan: {output.Value}");
+                }
+                else
+                {
+                    string pathSidikJari = output.Key;
+                    timer.Stop();
+                    var elapsedms = timer.ElapsedMilliseconds;//akhiri timer
+                    EstTimeLBL.Text = elapsedms.ToString() + " ms";
+                    MatchPercentLBL.Text = "null %";
+                    MessageBox.Show("Tidak ada sidik jari dengan tingkat kemiripan diatas 0,6.", "Sidik jari tidak ditemukan", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                string pathSidikJari = output.Key;
-                timer.Stop();
-                var elapsedms = timer.ElapsedMilliseconds;//akhiri timer
-                EstTimeLBL.Text = elapsedms.ToString() + " ms";
-                MatchPercentLBL.Text = "null %";
-                MessageBox.Show("Tidak ada sidik jari dengan tingkat kemiripan diatas 0,6.");
+                MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-
             
 
+            
         }
         private string GetImageFilename(System.Windows.Controls.Image image)
         {
