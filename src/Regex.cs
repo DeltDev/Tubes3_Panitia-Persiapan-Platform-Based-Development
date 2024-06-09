@@ -20,6 +20,48 @@ public class Regex
         return result;
     }
 
+    public static double LevenshteinDistance (string text1, string text2)
+    {
+        int n = text1.Length;
+        int m = text2.Length;
+        int[,] dp = new int[n + 1, m + 1];
+
+        for (int i = 0; i <= n; i++)
+        {
+            for (int j = 0; j <= m; j++)
+            {
+                if (i == 0)
+                {
+                    dp[i, j] = j;
+                }
+                else if (j == 0)
+                {
+                    dp[i, j] = i;
+                }
+                else if (text1[i - 1] == text2[j - 1])
+                {
+                    dp[i, j] = dp[i - 1, j - 1];
+                }
+                else
+                {
+                    dp[i, j] = 1 + Math.Min(dp[i, j - 1], Math.Min(dp[i - 1, j], dp[i - 1, j - 1]));
+                }
+            }
+        }
+
+        return dp[n, m];
+    }
+
+    public static bool SimilarityRate(string text1, string text2)
+    {
+        double distance = LevenshteinDistance(text1, text2);
+        double maxLength = Math.Max(text1.Length, text2.Length);
+        double rate = 1 - distance / maxLength;
+
+        Console.WriteLine(rate);
+        return rate >= 0.6;
+    }
+
     public static bool MatchName(string text, string pattern)
     {
         string textCompared = text.ToLower();
@@ -32,7 +74,7 @@ public class Regex
         {
             if (ContainsAllAlphabets(textCompared, patternCompared))
             {
-                return true;
+                return SimilarityRate(textCompared, patternCompared);
             }
             else
             {
@@ -45,7 +87,7 @@ public class Regex
     {
         foreach (char letter in pattern)
         {
-            Console.WriteLine(letter);
+            // Console.WriteLine(letter);
             if (!text.Contains(letter.ToString()))
             {
                 return false;
@@ -98,15 +140,23 @@ public class Regex
 // {
 //       static void Main(string[] args)
 //     {
-//         string connectionString = "Server=localhost;Database=stima;Uid=root;Pwd=Radhita7*;";
-//         DatabaseManager dbManager = new DatabaseManager(connectionString);
-//         List<string> data = dbManager.getAllNamaFromBiodata();
-//         foreach (string berkas in data) {
-//             Console.WriteLine(berkas);
-//         }
+//         // string connectionString = "Server=localhost;Database=stima;Uid=root;Pwd=Radhita7*;";
+//         // DatabaseManager dbManager = new DatabaseManager(connectionString);
+//         // List<string> data = dbManager.getAllNamaFromBiodata();
+//         // // foreach (string berkas in data) {
+//         // //     // Console.WriteLine(berkas);
+//         // // }
 
-//         string getname = dbManager.getNameFromSidikJari(@"test\1717073090681.bmp");
-//         string realname = BahasaAlay.ResultText(data, getname);
-//         dbManager.printDataFromName(realname);
+//         // string getname = dbManager.getNameFromSidikJari(@"test\1717073090681.bmp");
+//         // string realname = Regex.ResultText(data, getname);
+//         // dbManager.printDataFromName(realname);
+
+//         List<string> data = new List<string>();
+//         data.Add("Radhita Rahma");
+//         data.Add("Diero");
+//         data.Add("Bintang Dwi Marthen");
+
+//         string pattern = "d3R";
+//         Console.WriteLine("Match Name: " + Regex.ResultText(data, pattern));
 //     }
 // }
