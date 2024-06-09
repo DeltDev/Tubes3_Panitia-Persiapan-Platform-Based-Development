@@ -7,6 +7,58 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="720" Width="1280" Background="DarkGray"
         ResizeMode="NoResize">
+    <Window.Resources>
+        <Style x:Key="IMGSelectStyle" TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <Border x:Name="ButtonBorder"
+                                    Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="ButtonBorder" Property="Background">
+                                    <Setter.Value>
+                                        <ImageBrush ImageSource="/hoverpilihcitrabutton.png"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="FindStyle" TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <Border x:Name="ButtonBorder"
+                                    Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="ButtonBorder" Property="Background">
+                                    <Setter.Value>
+                                        <ImageBrush ImageSource="/hovercaributton.png"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="/bgwithlogo.png"/>
@@ -17,29 +69,29 @@
 
         <Image x:Name="InputImage" HorizontalAlignment="Left" Height="262" Margin="145,241,0,0" VerticalAlignment="Top" Width="197" Source="/new_emptyplaceholder.png"/>
         <Image x:Name="OutputImage" HorizontalAlignment="Left" Height="262" Margin="522,243,0,0" VerticalAlignment="Top" Width="198" Source="/new_emptyplaceholder.png"/>
-        <Button x:Name="ChooseIMGButton" Content="" HorizontalAlignment="Left" Margin="144,516,0,0" VerticalAlignment="Top" FontSize="36" Width="190" Click="ChooseIMGButton_Click" Height="67" BorderBrush="#00000000" Foreground="{x:Null}">
-            <Button.Style>
-                <Style TargetType="Button">
-                    <Setter Property="Background">
-                        <Setter.Value>
-                            <ImageBrush ImageSource="/pilihcitrabutton.png"></ImageBrush>
-                        </Setter.Value>
-                    </Setter>
-                    <Style.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background">
-                                <Setter.Value>
-                                    <ImageBrush></ImageBrush>
-                                </Setter.Value>
-                            </Setter>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </Button.Style>
+        <Button x:Name="ChooseIMGButton" Content=""
+                HorizontalAlignment="Left" Margin="144,516,0,0" VerticalAlignment="Top"
+                FontSize="36" Width="190" Height="67"
+                Style="{StaticResource IMGSelectStyle}"
+                BorderBrush="#00000000" Foreground="{x:Null}"
+                Click="ChooseIMGButton_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="/pilihcitrabutton.png"/>
+            </Button.Background>
         </Button>
         <RadioButton x:Name="BMRadioBtn" GroupName="MethodChoice" Content="Boyer-Moore" HorizontalAlignment="Left" Margin="914,111,0,0" VerticalAlignment="Top" Checked="BMRadioBtn_Checked" FontSize="20" Width="155" Foreground="#FF3B5FAD" FontFamily="Montserrat SemiBold"/>
         <RadioButton x:Name="KMPRadioBtn" GroupName="MethodChoice" Content="Knuth-Morris-Pratt" HorizontalAlignment="Left" Margin="914,137,0,0" VerticalAlignment="Top" Checked="KMPRadioBtn_Checked" FontSize="20" Width="246" Foreground="#FF3B5FAD" FontFamily="Montserrat SemiBold"/>
-        <Button x:Name="SearchButton" HorizontalAlignment="Left" Margin="523,516,0,0" VerticalAlignment="Top" FontSize="36" Width="190" Click="SearchButton_Click" Height="67" BorderBrush="{x:Null}" Foreground="{x:Null}" >
+        <Button x:Name="SearchButton" 
+                HorizontalAlignment="Left" 
+                Margin="523,516,0,0" 
+                VerticalAlignment="Top" 
+                FontSize="36" 
+                Width="190" 
+                Click="SearchButton_Click" 
+                Height="67" 
+                BorderBrush="{x:Null}" 
+                Foreground="{x:Null}" 
+                Style="{StaticResource FindStyle}">
             <Button.Background>
                 <ImageBrush ImageSource="/caributton.png"/>
             </Button.Background>
