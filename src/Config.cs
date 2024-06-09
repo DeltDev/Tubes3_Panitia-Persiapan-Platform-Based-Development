@@ -1,6 +1,6 @@
 public class Config
 {
-    public static string Database = "stima3";
-    public static string Uid = "root";
-    public static string Password = "Than0s123";
+    public static string Database = "";
+    public static string Uid = "";
+    public static string Password = "";
 }
