@@ -204,7 +204,7 @@ namespace src
                 string pathSidikJari = output.Key;
                 timer.Stop();
                 var elapsedms = timer.ElapsedMilliseconds;//akhiri timer
-                EstTimeLBL.Text = elapsedms.ToString();
+                EstTimeLBL.Text = elapsedms.ToString() + " ms";
                 MessageBox.Show("Tidak ada sidik jari dengan tingkat kemiripan diatas 0,6.");
                 MatchPercentLBL.Text = "0 %";
             }

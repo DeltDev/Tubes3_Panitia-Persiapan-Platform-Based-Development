@@ -14,6 +14,8 @@
     <None Remove="caributton.png" />
     <None Remove="EmptyPlaceholder.png" />
     <None Remove="FINGFIND.png" />
+    <None Remove="hovercaributton.png" />
+    <None Remove="hoverpilihcitrabutton.png" />
     <None Remove="new_emptyplaceholder.png" />
     <None Remove="pilihcitrabutton.png" />
   </ItemGroup>
@@ -32,6 +34,8 @@
     <Resource Include="caributton.png" />
     <Resource Include="EmptyPlaceholder.png" />
     <Resource Include="FINGFIND.png" />
+    <Resource Include="hovercaributton.png" />
+    <Resource Include="hoverpilihcitrabutton.png" />
     <Resource Include="new_emptyplaceholder.png" />
     <Resource Include="pilihcitrabutton.png" />
   </ItemGroup>
