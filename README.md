@@ -19,13 +19,15 @@ Algoritma ini akan mencari kemunculan pola dalam sebuah teks dengan arah _right-
 - Regex  
 Program memiliki kelas Regex yang bertujuan untuk mengonversi data korup yang mungkin terjadi di atribut nama pada tabel sidik_jari menjadi karakter alfabet seluruhnya. Kemudian, kelas Regex akan mencari nilai atribut nama pada tabel biodata yang memiliki nilai kemiripan terbesar dengan hasil konversi data korup nama pada tabel biodata menggunakan Levenhstein Distance. 
 
+
 ## Screenshots
-![Example screenshot](./img/screenshot.png)
+![Example screenshot](./src/img/image.png)
 
 
 ## Setup
 Berikut merupakan hal-hal yang perlu dilakukan untuk menjalankan program:
 - _Clone_ repo github https://github.com/DeltDev/Tubes3_Panitia-Persiapan-Platform-Based-Development.
+- Ganti atribut-atribut dalam file Config.cs agar sesuai dengan basis data yang ingin digunakan.
 - Unduh _framework_ .NET (https://dotnet.microsoft.com/en-us/download/dotnet-framework)
 - Unduh package MySQL.Data untuk menghubungkan program dengan database MySQL
 ```bash
