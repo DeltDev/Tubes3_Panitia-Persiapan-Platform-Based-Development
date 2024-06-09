@@ -5,9 +5,10 @@ Program untuk menemukan biodata dengan sidik jari yang paling mirip dalam basis 
 ## Table of Contents
 * [General Info](#general-information)
 * [Screenshots](#screenshots)
+* [Requirements](#requirements)
 * [Setup](#setup)
 * [Usage](#usage)
-* [Contact](#contact)
+* [Dibuat oleh](#dibuat-oleh)
 
 
 ## General Information
@@ -23,27 +24,27 @@ Program memiliki kelas Regex yang bertujuan untuk mengonversi data korup yang mu
 ## Screenshots
 ![Example screenshot](./src/img/image.png)
 
+## Requirements
+Berikut adalah komponen yang diperlukan untuk menjalankan program ini:
+1. .NET versi 8.0, [Unduh di sini](https://dotnet.microsoft.com/en-us/download/dotnet-framework)
+2. Server MySQL Community versi 8.0.37, [Unduh di sini](https://dev.mysql.com/downloads/windows/installer/8.0.html)
+3. Framework SixLabors.ImageSharp 3.1.4 (untuk menghandle gambar) [Ikuti cara instalasinya di sini](https://www.nuget.org/packages/SixLabors.ImageSharp)
+4. Library MySql.Data versi 8.4.0 [Ikuti cara instalasinya di sini](https://www.nuget.org/packages/MySql.Data)
+5. Library Dapper versi 2.1.35 [Ikuti cara instalasinya di sini](https://www.nuget.org/packages/Dapper)
+6. System.Drawing.Common versi 8.0.6 [Ikuti cara instalasinya di sini](https://www.nuget.org/packages/System.Drawing.Common/)
 
 ## Setup
 Berikut merupakan hal-hal yang perlu dilakukan untuk menjalankan program:
-- _Clone_ repo github https://github.com/DeltDev/Tubes3_Panitia-Persiapan-Platform-Based-Development.
-- Import database yang ingin digunakan.
-- Ganti atribut-atribut dalam file Config.cs agar sesuai dengan basis data yang ingin digunakan.
-- Unduh _framework_ .NET (https://dotnet.microsoft.com/en-us/download/dotnet-framework)
-- Unduh package MySQL.Data untuk menghubungkan program dengan database MySQL
-```bash
-dotnet add package MySql.Data --version 8.4.0
-```
-- Unduh package Dapper untuk menghubungkan program dengan database
-```bash
-dotnet add package Dapper --version 2.1.35
-```
-- Buka folder _src_ dalam terminal dan masukkan perintah 
+- Pastikan semua [requirements](#requirements) untuk program ini sudah diinstal dan diunduh
+- Lakukan _git clone_ repositori ini.
+- Import database yang ingin digunakan atau buat database baru.
+- Jika Anda menggunakan **Visual Studio Code**, buka folder _src_ dalam terminal dan masukkan perintah 
 ```bash
 dotnet run
 ```
-
-## Contact
+- Jika Anda menggunakan **Visual Studio**, buka file        ```Tubes3_Panitia-Persiapan-Platform-Based-Development.sln``` dan klik tombol build and run di Visual Studio. (Gambar tombol terletak di bawah ini) <br> ![SRC](./src/img/srcbutton.png)
+- Jika Anda ingin membuka aplikasi ini tanpa menggunakan IDE, buka file     ```src/bin/src.exe```
+## Dibuat oleh
 Dibuat oleh:
 | NIM      | Nama                    | Kelas                                                                                                                                                                                                               |
 |----------|-------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
