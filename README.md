@@ -27,6 +27,7 @@ Program memiliki kelas Regex yang bertujuan untuk mengonversi data korup yang mu
 ## Setup
 Berikut merupakan hal-hal yang perlu dilakukan untuk menjalankan program:
 - _Clone_ repo github https://github.com/DeltDev/Tubes3_Panitia-Persiapan-Platform-Based-Development.
+- Import database yang ingin digunakan.
 - Ganti atribut-atribut dalam file Config.cs agar sesuai dengan basis data yang ingin digunakan.
 - Unduh _framework_ .NET (https://dotnet.microsoft.com/en-us/download/dotnet-framework)
 - Unduh package MySQL.Data untuk menghubungkan program dengan database MySQL
