@@ -31,7 +31,7 @@ public class PencocokSidikJari
         // adalah 1, jika bukan exact match, maka akan dihitung menggunakan hamming distance.
         double tingkatKemiripan = 1;
         for (int i = 0; i < sidik_jari_masukan.Count && tingkatKemiripan == 1; i++)
-            if (algoritma.Match(sidik_jari_db_str, sidik_jari_masukan[i]).Count == 0)
+            if (!algoritma.Match(sidik_jari_db_str, sidik_jari_masukan[i]))
                 tingkatKemiripan = HitungTingkatKemiripan(sidik_jari_db_str, sidik_jari_masukan_str);
 
         return tingkatKemiripan;

@@ -10,7 +10,7 @@ public abstract class AlgoritmaPatternMatching
      *  @param   {string} pattern - pola yang ingin dicari dalam text.
      *  @returns {List<int>} array yang berisi indeks awal kemunculan pola dalam text.
      */
-    public abstract List<int> Match(string text, string pattern);
+    public abstract bool Match(string text, string pattern);
 }   
 
 /**
@@ -52,13 +52,12 @@ public class KMP : AlgoritmaPatternMatching {
      *  @param   {string} pattern - pola yang ingin dicari dalam text.
      *  @returns {List<int>} array yang berisi indeks awal kemunculan pola dalam text.
      */
-    public override List<int> Match(string text, string pattern)
+    public override bool Match(string text, string pattern)
     {
         // Isi border function.
         List<int> borderFunction = calcBorderFunction(pattern);
 
         // Cari pattern dalam text.
-        List<int> matches = new List<int>();
         int i = 0, j = 0;
         while (i < text.Length)
         {
@@ -72,10 +71,7 @@ public class KMP : AlgoritmaPatternMatching {
             else
             {
                 if (j == pattern.Length - 1)
-                {
-                    matches.Add(i - j);
-                    j = 0;
-                } 
+                    return true;
                 else
                 {
                     i++;
@@ -83,7 +79,7 @@ public class KMP : AlgoritmaPatternMatching {
                 }
             }
         }
-        return matches;
+        return false;
     }
 }
 
@@ -113,13 +109,12 @@ public class BM : AlgoritmaPatternMatching
      *  @param   {string} pattern - pola yang ingin dicari dalam text.
      *  @returns {List<int>} array yang berisi indeks awal kemunculan pola dalam text.
      */
-    public override List<int> Match(string text, string pattern) 
+    public override bool Match(string text, string pattern) 
     {
         // Isi last occurence function.
         Dictionary<char, int> charLastIdx = calcLastOccurenceFunction(pattern); 
 
         // Cari pattern dalam text.
-        List<int> matches = new List<int>();
         int shift = 0;
         while (shift + pattern.Length <= text.Length)
         {
@@ -129,19 +124,7 @@ public class BM : AlgoritmaPatternMatching
 
             int val;
             if (idx == -1)
-            {
-                matches.Add(shift);
-                
-                if (shift + pattern.Length < text.Length)
-                {
-                    if (charLastIdx.TryGetValue(text[shift + pattern.Length], out val))
-                        shift += pattern.Length - val;
-                    else 
-                        shift += pattern.Length + 1;
-                }
-                else
-                    break;
-            }
+                return true;
             else
             {
                 if (charLastIdx.TryGetValue(text[shift + idx], out val))
@@ -150,6 +133,6 @@ public class BM : AlgoritmaPatternMatching
                     shift += idx + 1;
             }
         }
-        return matches;
+        return false;
     }
 }
