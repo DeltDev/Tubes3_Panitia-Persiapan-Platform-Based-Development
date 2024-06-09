@@ -195,8 +195,8 @@ namespace src
                 timer.Stop();
                 var elapsedms = timer.ElapsedMilliseconds;//akhiri timer
                 EstTimeLBL.Text = elapsedms.ToString() +" ms";
-
-                MatchPercentLBL.Text = (output.Value * 100).ToString() + " %";
+                string percentageFormat = "0.00000";
+                MatchPercentLBL.Text = (output.Value * 100).ToString(percentageFormat) + " %";
                 //MessageBox.Show($"Tingkat kemiripan: {output.Value}");
             }
             else
@@ -205,8 +205,8 @@ namespace src
                 timer.Stop();
                 var elapsedms = timer.ElapsedMilliseconds;//akhiri timer
                 EstTimeLBL.Text = elapsedms.ToString() + " ms";
+                MatchPercentLBL.Text = "null %";
                 MessageBox.Show("Tidak ada sidik jari dengan tingkat kemiripan diatas 0,6.");
-                MatchPercentLBL.Text = "0 %";
             }
 
             
