@@ -9,7 +9,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="bgwithlogo.png" />
+    <None Remove="biodataplaceholder.png" />
+    <None Remove="caributton.png" />
     <None Remove="EmptyPlaceholder.png" />
+    <None Remove="FINGFIND.png" />
+    <None Remove="new_emptyplaceholder.png" />
+    <None Remove="pilihcitrabutton.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -21,7 +27,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="bgwithlogo.png" />
+    <Resource Include="biodataplaceholder.png" />
+    <Resource Include="caributton.png" />
     <Resource Include="EmptyPlaceholder.png" />
+    <Resource Include="FINGFIND.png" />
+    <Resource Include="new_emptyplaceholder.png" />
+    <Resource Include="pilihcitrabutton.png" />
   </ItemGroup>
 
 </Project>

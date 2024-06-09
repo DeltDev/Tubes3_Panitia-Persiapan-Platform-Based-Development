@@ -136,7 +136,7 @@ namespace src
             tempPath = System.IO.Path.GetFullPath(tempPath);
 
             //algoritma utama saat searching
-            string connectionString = $"Server=localhost;Database=stima3;Uid=root;Pwd=;"; //ganti password (Pwd) dengan password MySQL yang ada di device Anda
+            string connectionString = $"Server=localhost;Database=stima3;Uid=root;Pwd=Than0s123;"; //ganti password (Pwd) dengan password MySQL yang ada di device Anda
             DatabaseManager dbManager = new DatabaseManager(connectionString);
             AlgoritmaPatternMatching alg;
             if (chosenMethod == "Knuth-Morris-Pratt")
@@ -194,7 +194,7 @@ namespace src
                 string pathSidikJari = output.Key;
                 timer.Stop();
                 var elapsedms = timer.ElapsedMilliseconds;//akhiri timer
-                EstTimeLBL.Text = elapsedms.ToString();
+                EstTimeLBL.Text = elapsedms.ToString() +" ms";
 
                 MatchPercentLBL.Text = (output.Value * 100).ToString() + " %";
                 //MessageBox.Show($"Tingkat kemiripan: {output.Value}");

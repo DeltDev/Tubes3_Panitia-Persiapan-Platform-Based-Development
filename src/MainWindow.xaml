@@ -8,47 +8,64 @@
         Title="MainWindow" Height="720" Width="1280" Background="DarkGray"
         ResizeMode="NoResize">
     <Grid>
-        <TextBlock HorizontalAlignment="Center" Margin="0,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="40" Foreground="#FF120707"><Run Text="Pencari Sidik Jari"/><LineBreak/><Run/></TextBlock>
-        <Image x:Name="InputImage" HorizontalAlignment="Left" Height="293" Margin="115,0,0,0" VerticalAlignment="Center" Width="215" Source="/EmptyPlaceholder.png"/>
-        <Image x:Name="OutputImage" HorizontalAlignment="Center" Height="293" VerticalAlignment="Center" Width="216" Source="/EmptyPlaceholder.png"/>
-        <Button x:Name="ChooseIMGButton" Content="Pilih Citra" HorizontalAlignment="Left" Margin="122,584,0,0" VerticalAlignment="Top" FontSize="36" Width="200" Click="ChooseIMGButton_Click"/>
-        <RadioButton x:Name="BMRadioBtn" GroupName="MethodChoice" Content="Boyer-Moore" HorizontalAlignment="Left" Margin="339,589,0,0" VerticalAlignment="Top" Checked="BMRadioBtn_Checked" FontSize="20"/>
-        <RadioButton x:Name="KMPRadioBtn" GroupName="MethodChoice" Content="Knuth-Morris-Pratt" HorizontalAlignment="Left" Margin="339,615,0,0" VerticalAlignment="Top" Checked="KMPRadioBtn_Checked" FontSize="20"/>
-        <Button x:Name="SearchButton" Content="Cari!" HorizontalAlignment="Center" Margin="0,584,0,0" VerticalAlignment="Top" FontSize="36" Width="196" Click="SearchButton_Click" />
-        <TextBlock HorizontalAlignment="Left" Margin="756,542,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="24" Width="504" Height="99"><Run Text="Metode yang dipilih:"/><LineBreak/><Run Text="Waktu pencarian:"/><LineBreak/><Run Text="Persentase kecocokan:"/><LineBreak/><Run/></TextBlock>
-        <TextBlock x:Name="ChosenMethodLabel" HorizontalAlignment="Left" Margin="981,542,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="24" Width="244" Height="35"><Run Text="metode terpilih"/><LineBreak/><LineBreak/><Run/></TextBlock>
-        <TextBlock x:Name="EstimatedTimeLabel" HorizontalAlignment="Left" Margin="960,574,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="24" Width="200" Height="35"><Run Text="waktu"/><LineBreak/><Run/><LineBreak/><LineBreak/><Run/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="1165,574,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="24" Width="80" Height="35"><Run Text="ms"/><LineBreak/><Run/></TextBlock>
-        <TextBlock x:Name="MatchPercentLabel" HorizontalAlignment="Left" Margin="1008,606,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="24" Width="200" Height="35"><Run Text="persentase%"/><LineBreak/><Run/><LineBreak/><LineBreak/><Run/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="127,159,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="24" Width="195" Height="35"><Run Text="Sidik Jari Masukan"/><LineBreak/><Run/><LineBreak/><Run/></TextBlock>
-        <TextBlock HorizontalAlignment="Center" Margin="0,159,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="24" Width="172" Height="35"><Run Text="Sidik Jari Cocok"/><LineBreak/><Run/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="378,548,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="24" Width="108" Height="35"><Run Text="Metode"/><LineBreak/><Run/><LineBreak/><Run/><LineBreak/><Run/></TextBlock>
-        <ScrollViewer Margin="780,209,35,208" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
-            <Canvas Height="425">
-                <TextBlock Text="NIK: " Canvas.Left="10" Canvas.Top="10" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="20"/>
-                <TextBlock x:Name="NIKLabel" Text="Masukkkan Nomor Induk Kependudukan" Canvas.Left="50" Canvas.Top="10" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-                <TextBlock Text="Nama: " Canvas.Left="10" Canvas.Top="40" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-                <TextBlock x:Name="NameLabel" Text="Masukkan Nama Asli di sini" Canvas.Left="70" Canvas.Top="40" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-                <TextBlock Text="Tempat Lahir: " Canvas.Left="10" Canvas.Top="70" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-                <TextBlock x:Name="BornPlaceLabel" Text="Masukkan Tempat Lahir di sini " Canvas.Left="131" Canvas.Top="70" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                <TextBlock Text="Tanggal Lahir: " Canvas.Left="10" Canvas.Top="100" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-                <TextBlock x:Name="BirthDateLabel" Text="Masukkan Tanggal Lahir di sini " Canvas.Left="133" Canvas.Top="100" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                <TextBlock Text="Jenis Kelamin: " Canvas.Left="10" Canvas.Top="130" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-                <TextBlock x:Name="GenderLabel" Text="Masukkan Jenis Kelamin di sini " Canvas.Left="140" Canvas.Top="130" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                <TextBlock Text="Golongan Darah: " Canvas.Left="10" Canvas.Top="160" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-                <TextBlock x:Name="BloodTypeLabel" Text="Masukkan Golongan Darah di sini " Canvas.Left="161" Canvas.Top="160" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                <TextBlock Text="Alamat:" Canvas.Left="10" Canvas.Top="190" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-                <TextBlock x:Name="AddressLabel" Text="Masukkan Alamat di sini" Canvas.Left="81" Canvas.Top="190" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                <TextBlock Text="Agama:" Canvas.Left="10" Canvas.Top="220" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-                <TextBlock x:Name="ReligionLabel" Text="Masukkan Agama di sini" Canvas.Left="80" Canvas.Top="220" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                <TextBlock Text="Status Perkawinan:" Canvas.Left="10" Canvas.Top="250" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-                <TextBlock x:Name="MarriageStatusLabel" Canvas.Left="175" Canvas.Top="250" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" Height="33"><Run Text="Masukkan Status Perkawinan"/><LineBreak/><Run/></TextBlock>
-                <TextBlock Text="Pekerjaan:" Canvas.Left="10" Canvas.Top="280" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-                <TextBlock x:Name="JobLabel" Text="Masukkan Pekerjaan di sini" Canvas.Left="101" Canvas.Top="280" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                <TextBlock Text="Kewarganegaraan:" Canvas.Left="10" Canvas.Top="310" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-                <TextBlock x:Name="NationalityLabel" Text="Masukkan Kewarganegaraan di sini" Canvas.Left="172" Canvas.Top="310" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <Grid.Background>
+            <ImageBrush ImageSource="/bgwithlogo.png"/>
+        </Grid.Background>
+        <Image HorizontalAlignment="Left" Height="401" Margin="54,194,0,0" VerticalAlignment="Top" Width="405" Source="/biodataplaceholder.png"/>
+        <Image HorizontalAlignment="Left" Height="401" Margin="426,194,0,0" VerticalAlignment="Top" Width="406" Source="/biodataplaceholder.png"/>
+        <Image HorizontalAlignment="Left" Height="401" Margin="801,194,0,0" VerticalAlignment="Top" Width="406" Source="/biodataplaceholder.png"/>
+
+        <Image x:Name="InputImage" HorizontalAlignment="Left" Height="262" Margin="145,241,0,0" VerticalAlignment="Top" Width="197" Source="/new_emptyplaceholder.png"/>
+        <Image x:Name="OutputImage" HorizontalAlignment="Left" Height="262" Margin="522,243,0,0" VerticalAlignment="Top" Width="198" Source="/new_emptyplaceholder.png"/>
+        <Button x:Name="ChooseIMGButton" Content="" HorizontalAlignment="Left" Margin="144,516,0,0" VerticalAlignment="Top" FontSize="36" Width="190" Click="ChooseIMGButton_Click" Height="67" BorderBrush="#00000000" Foreground="{x:Null}">
+            <Button.Background>
+                <ImageBrush ImageSource="/pilihcitrabutton.png"/>
+            </Button.Background>
+        </Button>
+        <RadioButton x:Name="BMRadioBtn" GroupName="MethodChoice" Content="Boyer-Moore" HorizontalAlignment="Left" Margin="914,111,0,0" VerticalAlignment="Top" Checked="BMRadioBtn_Checked" FontSize="20" Width="155" Foreground="#FF3B5FAD" FontFamily="Montserrat SemiBold"/>
+        <RadioButton x:Name="KMPRadioBtn" GroupName="MethodChoice" Content="Knuth-Morris-Pratt" HorizontalAlignment="Left" Margin="914,137,0,0" VerticalAlignment="Top" Checked="KMPRadioBtn_Checked" FontSize="20" Width="210" Foreground="#FF3B5FAD" FontFamily="Montserrat SemiBold"/>
+        <Button x:Name="SearchButton" Content="" HorizontalAlignment="Left" Margin="523,516,0,0" VerticalAlignment="Top" FontSize="36" Width="190" Click="SearchButton_Click" Height="67" BorderBrush="{x:Null}" Foreground="{x:Null}" >
+            <Button.Background>
+                <ImageBrush ImageSource="/caributton.png"/>
+            </Button.Background>
+        </Button>
+        <TextBlock x:Name="ChosenMethodLabel" HorizontalAlignment="Left" Margin="925,510,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Width="244" Height="35" Foreground="#FF3B5FAD" FontFamily="Montserrat SemiBold"><Run Text="metode terpilih"/><LineBreak/><LineBreak/><Run/></TextBlock>
+        <TextBlock x:Name="EstimatedTimeLabel" HorizontalAlignment="Left" Margin="1004,537,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Width="200" Height="35" Foreground="#FF3B5FAD" FontFamily="Montserrat SemiBold"><Run Text="waktu"/><LineBreak/><Run/><LineBreak/><LineBreak/><Run/></TextBlock>
+        <TextBlock x:Name="MatchPercentLabel" HorizontalAlignment="Left" Margin="1069,563,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Width="200" Height="35" Foreground="#FF3B5FAD" FontFamily="Montserrat SemiBold"><Run Text="persentase%"/><LineBreak/><Run/><LineBreak/><LineBreak/><Run/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="930,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="24" Width="217" Height="35" Foreground="#FF3B5FAD" FontFamily="Montserrat SemiBold"><Run Text="Pilihan Algoritma"/><LineBreak/><Run/><LineBreak/><Run/><LineBreak/><Run/></TextBlock>
+        <!-- Margin="875,229,150,205" -->
+        <ScrollViewer Margin="864,203,153,210" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+            <Canvas Height="350" Width="500">
+                <TextBlock Text="NIK: " Canvas.Left="10" Canvas.Top="10" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="20" Foreground="#FF3B5FAD" FontFamily="Montserrat SemiBold"/>
+                <TextBlock x:Name="NIKLabel" Text="Masukkkan Nomor Induk Kependudukan" Canvas.Left="55" Canvas.Top="10" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Montserrat SemiBold" Foreground="#FF3B5FAD"/>
+                <TextBlock Text="Nama: " Canvas.Left="10" Canvas.Top="40" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="#FF3B5FAD" FontFamily="Montserrat SemiBold"/>
+                <TextBlock x:Name="NameLabel" Text="Masukkan Nama Asli di sini" Canvas.Left="78" Canvas.Top="40" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FF3B5FAD" FontFamily="Montserrat SemiBold"/>
+                <TextBlock Text="Tempat Lahir: " Canvas.Left="10" Canvas.Top="70" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="#FF3B5FAD" FontFamily="Montserrat SemiBold"/>
+                <TextBlock x:Name="BornPlaceLabel" Text="Masukkan Tempat Lahir di sini " Canvas.Left="153" Canvas.Top="70" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FF3B5FAD" FontFamily="Montserrat SemiBold"/>
+                <TextBlock Text="Tanggal Lahir: " Canvas.Left="10" Canvas.Top="100" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="#FF3B5FAD" FontFamily="Montserrat SemiBold"/>
+                <TextBlock x:Name="BirthDateLabel" Text="Masukkan Tanggal Lahir di sini " Canvas.Left="157" Canvas.Top="100" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FF3B5FAD" FontFamily="Montserrat SemiBold"/>
+                <TextBlock Text="Jenis Kelamin: " Canvas.Left="10" Canvas.Top="130" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="#FF3B5FAD" FontFamily="Montserrat SemiBold"/>
+                <TextBlock x:Name="GenderLabel" Text="Masukkan Jenis Kelamin di sini " Canvas.Left="159" Canvas.Top="130" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FF3B5FAD" FontFamily="Montserrat SemiBold"/>
+                <TextBlock Text="Golongan Darah: " Canvas.Left="10" Canvas.Top="160" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="#FF3B5FAD" FontFamily="Montserrat SemiBold"/>
+                <TextBlock x:Name="BloodTypeLabel" Text="Masukkan Golongan Darah di sini " Canvas.Left="185" Canvas.Top="160" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FF3B5FAD" FontFamily="Montserrat SemiBold"/>
+                <TextBlock Text="Alamat:" Canvas.Left="10" Canvas.Top="190" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="#FF3B5FAD" FontFamily="Montserrat SemiBold"/>
+                <TextBlock x:Name="AddressLabel" Text="Masukkan Alamat di sini" Canvas.Left="93" Canvas.Top="190" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FF3B5FAD" FontFamily="Montserrat SemiBold"/>
+                <TextBlock Text="Agama:" Canvas.Left="10" Canvas.Top="220" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="#FF3B5FAD" FontFamily="Montserrat SemiBold"/>
+                <TextBlock x:Name="ReligionLabel" Text="Masukkan Agama di sini" Canvas.Left="92" Canvas.Top="220" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FF3B5FAD" FontFamily="Montserrat SemiBold"/>
+                <TextBlock Text="Status Perkawinan:" Canvas.Left="10" Canvas.Top="250" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="#FF3B5FAD" FontFamily="Montserrat SemiBold"/>
+                <TextBlock x:Name="MarriageStatusLabel" Canvas.Left="212" Canvas.Top="250" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center" Height="33" Foreground="#FF3B5FAD" FontFamily="Montserrat SemiBold"><Run Text="Masukkan Status Perkawinan"/><LineBreak/><Run/></TextBlock>
+                <TextBlock Text="Pekerjaan:" Canvas.Left="10" Canvas.Top="280" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="#FF3B5FAD" FontFamily="Montserrat SemiBold"/>
+                <TextBlock x:Name="JobLabel" Text="Masukkan Pekerjaan di sini" Canvas.Left="120" Canvas.Top="280" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FF3B5FAD" FontFamily="Montserrat SemiBold"/>
+                <TextBlock Text="Kewarganegaraan:" Canvas.Left="10" Canvas.Top="310" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="#FF3B5FAD" FontFamily="Montserrat SemiBold"/>
+                <TextBlock x:Name="NationalityLabel" Text="Masukkan Kewarganegaraan di sini" Canvas.Left="205" Canvas.Top="310" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FF3B5FAD" FontFamily="Montserrat SemiBold"/>
             </Canvas>
         </ScrollViewer>
-        <TextBlock HorizontalAlignment="Left" Margin="926,159,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="24" Width="86" Height="35"><Run Text="Biodata"/><LineBreak/><Run/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="137,165,0,0" TextWrapping="Wrap" Text="Sidik Jari Pencarian" VerticalAlignment="Top" Foreground="#FF3B5FAD" FontFamily="Montserrat SemiBold" FontSize="20"/>
+        <TextBlock HorizontalAlignment="Left" Margin="544,165,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FF3B5FAD" FontFamily="Montserrat SemiBold" FontSize="20" Height="24"><Run Text="Sidik Jari Hasil"/><LineBreak/><Run/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="951,165,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FF3B5FAD" FontFamily="Montserrat SemiBold" FontSize="20" Height="24"><Run Text="Biodata"/><LineBreak/><Run/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="808,510,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Width="117" Height="35" Foreground="#FF3B5FAD" FontFamily="Montserrat SemiBold" Text="Algoritma :"/>
+        <TextBlock HorizontalAlignment="Left" Margin="808,537,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Width="211" Height="35" Foreground="#FF3B5FAD" FontFamily="Montserrat SemiBold"><Run Text="Waktu Pencarian  :"/><LineBreak/><Run/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="809,563,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Width="281" Height="35" Foreground="#FF3B5FAD" FontFamily="Montserrat SemiBold"><Run Text="Persentase Kecocokkan :"/><LineBreak/><Run/></TextBlock>
+
     </Grid>
 </Window>

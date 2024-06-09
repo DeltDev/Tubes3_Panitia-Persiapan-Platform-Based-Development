@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "D:\\Tugas Besar 3 STIMA\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{CEEBEAA2-9A12-486E-B65A-508728FE0E8D}|src\\src.csproj|d:\\tugas besar 3 stima\\src\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{CEEBEAA2-9A12-486E-B65A-508728FE0E8D}|src\\src.csproj|solutionrelative:src\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{CEEBEAA2-9A12-486E-B65A-508728FE0E8D}|src\\src.csproj|d:\\tugas besar 3 stima\\src\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CEEBEAA2-9A12-486E-B65A-508728FE0E8D}|src\\src.csproj|solutionrelative:src\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{CEEBEAA2-9A12-486E-B65A-508728FE0E8D}|src\\src.csproj|d:\\tugas besar 3 stima\\src\\convertimage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CEEBEAA2-9A12-486E-B65A-508728FE0E8D}|src\\src.csproj|solutionrelative:src\\convertimage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CEEBEAA2-9A12-486E-B65A-508728FE0E8D}|src\\src.csproj|d:\\tugas besar 3 stima\\src\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{CEEBEAA2-9A12-486E-B65A-508728FE0E8D}|src\\src.csproj|solutionrelative:src\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{CEEBEAA2-9A12-486E-B65A-508728FE0E8D}|src\\src.csproj|d:\\tugas besar 3 stima\\src\\databasemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -41,6 +41,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Tugas Besar 3 STIMA\\src\\obj\\Debug\\net8.0-windows\\src_21pi3csw_wpftmp.AssemblyInfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\obj\\Debug\\net8.0-windows\\src_21pi3csw_wpftmp.AssemblyInfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CEEBEAA2-9A12-486E-B65A-508728FE0E8D}|src\\src.csproj|d:\\tugas besar 3 stima\\src\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{CEEBEAA2-9A12-486E-B65A-508728FE0E8D}|src\\src.csproj|solutionrelative:src\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -50,8 +54,20 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 6,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "App.xaml",
+              "DocumentMoniker": "D:\\Tugas Besar 3 STIMA\\src\\App.xaml",
+              "RelativeDocumentMoniker": "src\\App.xaml",
+              "ToolTip": "D:\\Tugas Besar 3 STIMA\\src\\App.xaml",
+              "RelativeToolTip": "src\\App.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-06-09T08:20:51.27Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 3,
@@ -114,18 +130,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "D:\\Tugas Besar 3 STIMA\\src\\MainWindow.xaml",
               "RelativeDocumentMoniker": "src\\MainWindow.xaml",
               "ToolTip": "D:\\Tugas Besar 3 STIMA\\src\\MainWindow.xaml",
               "RelativeToolTip": "src\\MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-05-30T11:57:33.873Z"
+              "WhenOpened": "2024-05-30T11:57:33.873Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "ConvertImage.cs",
               "DocumentMoniker": "D:\\Tugas Besar 3 STIMA\\src\\ConvertImage.cs",
               "RelativeDocumentMoniker": "src\\ConvertImage.cs",
@@ -137,16 +154,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "MainWindow.xaml.cs",
               "DocumentMoniker": "D:\\Tugas Besar 3 STIMA\\src\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "src\\MainWindow.xaml.cs",
               "ToolTip": "D:\\Tugas Besar 3 STIMA\\src\\MainWindow.xaml.cs",
               "RelativeToolTip": "src\\MainWindow.xaml.cs",
-              "ViewState": "AQIAAIUAAAAAAAAAAAAewH8AAAANAAAA",
+              "ViewState": "AQIAADwAAAAAAAAAAAAWwFMAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-30T11:57:29.317Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-30T11:57:29.317Z"
             },
             {
               "$type": "Document",
