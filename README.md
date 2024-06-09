@@ -17,8 +17,7 @@ Algoritma ini akan mencari kemunculan pola dalam sebuah teks dengan arah _left-t
 - Algoritma BM  
 Algoritma ini akan mencari kemunculan pola dalam sebuah teks dengan arah _right-to-left_ dan menggunakan sebuah _array_ last occurence function yang berisi indeks kemunculan terakhir setiap karakter dalam pola untuk menentukan besar lompatan yang diambil ketika terjadi _mismatch_.  
 - Regex  
-Penjelasan regex
-
+Program memiliki kelas Regex yang bertujuan untuk mengonversi data korup yang mungkin terjadi di atribut nama pada tabel sidik_jari menjadi karakter alfabet seluruhnya. Kemudian, kelas Regex akan mencari nilai atribut nama pada tabel biodata yang memiliki nilai kemiripan terbesar dengan hasil konversi data korup nama pada tabel biodata menggunakan Levenhstein Distance. 
 
 ## Screenshots
 ![Example screenshot](./img/screenshot.png)
