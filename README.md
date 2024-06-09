@@ -27,7 +27,14 @@ Program memiliki kelas Regex yang bertujuan untuk mengonversi data korup yang mu
 Berikut merupakan hal-hal yang perlu dilakukan untuk menjalankan program:
 - _Clone_ repo github https://github.com/DeltDev/Tubes3_Panitia-Persiapan-Platform-Based-Development.
 - Unduh _framework_ .NET (https://dotnet.microsoft.com/en-us/download/dotnet-framework)
-- Unduh package-package yang digunakan dalam program.
+- Unduh package MySQL.Data untuk menghubungkan program dengan database MySQL
+```bash
+dotnet add package MySql.Data --version 8.4.0
+```
+- Unduh package Dapper untuk menghubungkan program dengan database
+```bash
+dotnet add package Dapper --version 2.1.35
+```
 - Buka folder _src_ dalam terminal dan masukkan perintah 
 ```bash
 dotnet run
@@ -35,6 +42,8 @@ dotnet run
 
 ## Contact
 Dibuat oleh:
-- Akbar Al Fattah (13522036)  
-- Diero Arga Purnama (13522056)  
-- Andhita Naura Hariyanto (13552060)  
+| NIM      | Nama                    | Kelas                                                                                                                                                                                                               |
+|----------|-------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 13522036 | Akbar Al Fattah            | K-02                                                              |
+| 13522056 | Diero Arga Purnama         | K-02                                                              |
+| 13522060 | Andhita Naura Hariyanto    | K-02                                                              |
