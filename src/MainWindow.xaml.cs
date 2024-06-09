@@ -17,6 +17,7 @@ using System.IO;
 using System.Linq;
 using System.Windows;
 using SixLabors.ImageSharp;
+using System.Diagnostics;
 namespace src
 {
     /// <summary>
@@ -39,6 +40,18 @@ namespace src
             EstTimeLBL.Text = "";
             MatchPercentLBL = (TextBlock)FindName("MatchPercentLabel");
             MatchPercentLBL.Text = "";
+            //INISIALISASI AWAL LABEL
+            NIKLabel.Text = "";
+            NameLabel.Text = "";
+            BornPlaceLabel.Text = "";
+            BirthDateLabel.Text = "";
+            GenderLabel.Text = "";
+            BloodTypeLabel.Text = "";
+            AddressLabel.Text = "";
+            ReligionLabel.Text = "";
+            MarriageStatusLabel.Text = "";
+            JobLabel.Text = "";
+            NationalityLabel.Text = "";
             this.Closing += ClearImages;
         }
         private void ClearImages(object sender, System.ComponentModel.CancelEventArgs e)
@@ -99,7 +112,9 @@ namespace src
         }
 
         private void SearchButton_Click(object sender, RoutedEventArgs e)
-        {   string imgSelectedName = GetImageFilename(InputImage); //directory image asli yang didapat
+        {   
+            var timer = Stopwatch.StartNew();//mulai timer
+            string imgSelectedName = GetImageFilename(InputImage); //directory image asli yang didapat
 
             //tombol buat mulai search
             if (chosenMethod == "" || chosenMethod == null)
@@ -121,7 +136,7 @@ namespace src
             tempPath = System.IO.Path.GetFullPath(tempPath);
 
             //algoritma utama saat searching
-            string connectionString = $"Server=localhost;Database=stima3;Uid=root;Pwd=;";
+            string connectionString = $"Server=localhost;Database=stima3;Uid=root;Pwd=;"; //ganti password (Pwd) dengan password MySQL yang ada di device Anda
             DatabaseManager dbManager = new DatabaseManager(connectionString);
             AlgoritmaPatternMatching alg;
             if (chosenMethod == "Knuth-Morris-Pratt")
@@ -140,6 +155,11 @@ namespace src
             if (output.Value > 0.6)
             {
                 string sidik_jari_akhir = System.IO.Path.GetFileName(output.Key);
+                BitmapImage bitmap = new BitmapImage();
+                bitmap.BeginInit();
+                bitmap.UriSource = new Uri(output.Key);
+                bitmap.EndInit();
+                OutputImage.Source = bitmap;
                 string getname = dbManager.getNameFromSidikJari(sidik_jari_akhir);
 
                 List<string> data = dbManager.getAllNamaFromBiodata();
@@ -158,15 +178,39 @@ namespace src
                 string pekerjaan = dbManager.getPekerjaanFromNIK(NIK);
                 string kewarganegaraan = dbManager.getKewarganegaraanFromNIK(NIK);
 
+                //Display Biodata
+                NIKLabel.Text = NIK;
+                NameLabel.Text = nama;
+                BornPlaceLabel.Text = tempat_lahir;
+                BirthDateLabel.Text = tanggal_lahir;
+                GenderLabel.Text = jenis_kelamin;
+                BloodTypeLabel.Text = golongan_darah;
+                AddressLabel.Text = alamat;
+                ReligionLabel.Text = agama;
+                MarriageStatusLabel.Text = status_perkawinan;
+                JobLabel.Text = pekerjaan;
+                NationalityLabel.Text = kewarganegaraan;
                 // SIDIK JARI PALING MIRIP
                 string pathSidikJari = output.Key;
+                timer.Stop();
+                var elapsedms = timer.ElapsedMilliseconds;//akhiri timer
+                EstTimeLBL.Text = elapsedms.ToString();
 
-                MessageBox.Show($"Tingkat kemiripan: {output.Value}");
+                MatchPercentLBL.Text = (output.Value * 100).ToString() + " %";
+                //MessageBox.Show($"Tingkat kemiripan: {output.Value}");
             }
             else
             {
+                string pathSidikJari = output.Key;
+                timer.Stop();
+                var elapsedms = timer.ElapsedMilliseconds;//akhiri timer
+                EstTimeLBL.Text = elapsedms.ToString();
                 MessageBox.Show("Tidak ada sidik jari dengan tingkat kemiripan diatas 0,6.");
+                MatchPercentLBL.Text = "0 %";
             }
+
+            
+
         }
         private string GetImageFilename(System.Windows.Controls.Image image)
         {

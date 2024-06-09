@@ -1,7 +1,7 @@
 ﻿src
 1.0.0.0
 
-winexe
+exe
 C#
 .cs
 D:\Tugas Besar 3 STIMA\src\obj\Debug\net8.0-windows\
@@ -16,5 +16,5 @@ D:\Tugas Besar 3 STIMA\src\App.xaml
 213-321565263
 MainWindow.xaml;
 
-False
+True
 
