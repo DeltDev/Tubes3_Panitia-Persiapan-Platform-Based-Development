@@ -3,6 +3,7 @@ using System.Text.RegularExpressions;
 
 public class Regex
 {
+    // Mengonversi string masukan dengan mengubah nilai angka menjadi nilai huruf terkait serta membuat seluruh huruf menjadi huruf kecil
     public static string Translate(string input)
     {
         string result = input;
@@ -13,14 +14,13 @@ public class Regex
         result = result.Replace("6", "g");
         result = result.Replace("0", "o");
         result = result.Replace("5", "s");
-        result = result.Replace("7", "t");
-        result = result.Replace("8", "b");
 
         result = result.ToLower();
 
         return result;
     }
 
+    // Mencari nilai Levenshtein Distance dari dua string
     public static double LevenshteinDistance (string text1, string text2)
     {
         int n = text1.Length;
@@ -53,6 +53,7 @@ public class Regex
         return dp[n, m];
     }
 
+    // Menentukan tingkat kemiripan antara dua string berdasarkan nilai yang didapat dari perhitungan Levendstein Distance
     public static bool SimilarityRate(string text1, string text2)
     {
         double distance = LevenshteinDistance(text1, text2);
@@ -63,6 +64,7 @@ public class Regex
         return rate >= 0.6;
     }
 
+    // Mencocokkan nama dengan pola yang diberikan
     public static bool MatchName(string text, string pattern)
     {
         string textCompared = text.ToLower();
@@ -84,6 +86,7 @@ public class Regex
         }
     }
 
+    // Menentukan apakah teks mengandung seluruh huruf yang ada pada pattern
     private static bool ContainsAllAlphabets(string text, string pattern)
     {
         foreach (char letter in pattern)
@@ -97,6 +100,7 @@ public class Regex
         return true;
     }
 
+    // Mengimplementasikan fungsi MatchName pada List of string yang berisikan seluruh nama dari basis data untuk mencari nama yang cocok dengan pattern yang diberikan
     public static string ResultText(List<string> dataname, string pattern)
     {
         foreach (string name in dataname)
@@ -109,6 +113,7 @@ public class Regex
         return "Not found";
     }
 
+    // Menentukan apakah panjang kata dari text dan pattern sama
     private static bool isWordLengthSame(string text, string pattern)
     {
         static int CountWords(string text)
@@ -136,28 +141,3 @@ public class Regex
         return CountWords(text) == CountWords(pattern);
     }
 }
-
-// class Program
-// {
-//       static void Main(string[] args)
-//     {
-//         // string connectionString = "Server=localhost;Database=stima;Uid=root;Pwd=Radhita7*;";
-//         // DatabaseManager dbManager = new DatabaseManager(connectionString);
-//         // List<string> data = dbManager.getAllNamaFromBiodata();
-//         // // foreach (string berkas in data) {
-//         // //     // Console.WriteLine(berkas);
-//         // // }
-
-//         // string getname = dbManager.getNameFromSidikJari(@"test\1717073090681.bmp");
-//         // string realname = Regex.ResultText(data, getname);
-//         // dbManager.printDataFromName(realname);
-
-//         List<string> data = new List<string>();
-//         data.Add("Radhita Rahma");
-//         data.Add("Diero");
-//         data.Add("Bintang Dwi Marthen");
-
-//         string pattern = "d3R";
-//         Console.WriteLine("Match Name: " + Regex.ResultText(data, pattern));
-//     }
-// }

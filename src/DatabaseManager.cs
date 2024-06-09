@@ -321,23 +321,3 @@ public class DatabaseManager
 
     }
 }
-
-// class Program
-// {
-//        static void Main(string[] args)
-//     {
-//         string connectionString = "Server=localhost;Database=stima;Uid=root;Pwd=password;";
-//         DatabaseManager dbManager = new DatabaseManager(connectionString);
-//         List<string> data = dbManager.getAllSidikJari();
-//         foreach (string berkas in data) {
-//             Console.WriteLine(berkas);
-//         }
-//         // string name = dbManager.getNameFromSidikJari(@"..\test\100__M_Left_index_finger.bmp"); // diubah aja jadi path ke foto fingerprintnya
-//         // Console.WriteLine(name);
-//         // dbManager.printDataFromName(name);
-//         // string NIK = dbManager.getNIKFromName(name);
-//         // string pekerjaan = dbManager.getTanggalLahirFromNIK(NIK);
-//         // Console.WriteLine(pekerjaan);
-//         // dbManager.insertData();
-//     }
-// }
